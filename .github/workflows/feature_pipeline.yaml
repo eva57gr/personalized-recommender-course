@@ -1,0 +1,36 @@
+name: ML Pipelines
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  push:
+    branches:
+      - main
+      
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ml_pipelines:
+    name: QA
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: 0.4.30
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Install the project
+        run: |
+          uv sync --all-extras --dev
+
+      - name: Run pipeline
+        run: uv run ipython notebooks/1_feature_engineering.ipynb
