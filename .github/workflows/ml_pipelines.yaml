@@ -3,9 +3,10 @@ name: ML Pipelines
 on:
   schedule:
     - cron: '0 * * * *'  # Runs every hour
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:  # Allows manual triggering from GitHub UI
       
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -18,9 +19,9 @@ jobs:
     env:
       PIPELINES: |
         notebooks/1_feature_engineering.ipynb
-        notebooks/2_training_pipeline.ipynb
-        notebooks/3_inference_pipeline.ipynb
-
+        notebooks/2_train_retrieval_model.ipynb
+        notebooks/3_embeddings_creation.ipynb
+        notebooks/4_train_ranking_model.ipynb
 
     steps:
       - name: Checkout
