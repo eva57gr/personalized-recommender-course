@@ -26,10 +26,15 @@ jobs:
           version: 0.4.30
           
       - name: Get notebook list
-        id: ml_pipelines  # Changed from ml_pipelines to match matrix reference
+        id: ml_pipelines
         run: |
-          echo "ml_pipelines=$(ls notebooks/*.ipynb | sort -n | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+          echo "notebooks=$(ls notebooks/*.ipynb | sort -n | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
 
+    strategy:
+      matrix:
+        notebook: ${{ fromJson(steps.notebooks.outputs.notebooks) }}
+
+    steps:
       - name: Set up Python
         run: uv python install
 
@@ -38,10 +43,7 @@ jobs:
           uv sync --all-extras --dev
 
       - name: Run pipeline
-        run: uv run ipython ${{ matrix.ml_pipelines }}  # Changed from ml_pipelines to notebook
+        run: uv run ipython ${{ matrix.ml_pipelines }}
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
-    
-    strategy:  # Moved strategy to correct indentation level
-      matrix:
-        ml_pipelines: ${{ fromJson(steps.notebooks.outputs.notebooks) }}
+
