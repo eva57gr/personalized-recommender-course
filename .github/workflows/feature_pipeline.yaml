@@ -24,6 +24,15 @@ jobs:
         uses: astral-sh/setup-uv@v3
         with:
           version: 0.4.30
+          
+      - name: Get notebook list
+        id: ml_pipelines
+        run: |
+          echo "notebooks=$(ls notebooks/*.ipynb | sort -n | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+
+    strategy:
+      matrix:
+        notebook: ${{ fromJson(steps.notebooks.outputs.notebooks) }}
 
       - name: Set up Python
         run: uv python install
@@ -33,7 +42,7 @@ jobs:
           uv sync --all-extras --dev
 
       - name: Run pipeline
-        run: uv run ipython notebooks/1_feature_engineering.ipynb
+        run: uv run ipython ${{ matrix.ml_pipelines }}
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
