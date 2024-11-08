@@ -32,8 +32,10 @@ jobs:
         with:
           version: 0.4.30
 
-      # - name: Set up Python
-      #   run: uv python install
+      - name: Create and activate virtual environment
+        run: |
+          uv venv
+          source .venv/bin/activate
 
       - name: Install the project
         run: |
