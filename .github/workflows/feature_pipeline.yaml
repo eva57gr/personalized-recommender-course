@@ -15,7 +15,7 @@ jobs:
   ml_pipelines:
     name: ML Pipelines
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -28,11 +28,14 @@ jobs:
       - name: Get notebook list
         id: ml_pipelines
         run: |
-          echo "notebooks=$(ls notebooks/*.ipynb | sort -n | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+          echo "ml_pipelines=$(ls notebooks/*.ipynb | sort -n | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
 
+  run_pipelines:
+    needs: ml_pipelines
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        notebook: ${{ fromJson(steps.notebooks.outputs.notebooks) }}
+        ml_pipeline: ${{ fromJson(needs.ml_pipelines.outputs.ml_pipelines) }}
 
     steps:
       - name: Set up Python
@@ -43,7 +46,6 @@ jobs:
           uv sync --all-extras --dev
 
       - name: Run pipeline
-        run: uv run ipython ${{ matrix.ml_pipelines }}
+        run: uv run ipython ${{ matrix.ml_pipeline }}
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
-
