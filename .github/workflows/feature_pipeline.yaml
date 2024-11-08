@@ -15,13 +15,12 @@ jobs:
   ml_pipelines:
     name: ML Pipelines
     runs-on: ubuntu-latest
-    strategy:
-        matrix:
-          ml_pipeline: [
-            'notebooks/1_feature_engineering.ipynb',
-            'notebooks/2_training_pipeline.ipynb',
-            'notebooks/3_inference_pipeline.ipynb'
-          ]
+    env:
+      PIPELINES: |
+        notebooks/1_feature_engineering.ipynb
+        notebooks/2_training_pipeline.ipynb
+        notebooks/3_inference_pipeline.ipynb
+
 
     steps:
       - name: Checkout
@@ -39,7 +38,10 @@ jobs:
           uv sync --all-extras --dev
 
       - name: Run pipeline
-        run: uv run ipython ${{ matrix.ml_pipeline }}
+        run: |
+          for pipeline in $PIPELINES; do
+            uv run ipython "$pipeline"
+          done
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
