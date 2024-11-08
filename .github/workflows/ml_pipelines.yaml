@@ -13,49 +13,49 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  feature_engineering:
-    name: Feature Engineering
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+  # feature_engineering:
+  #   name: Feature Engineering
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
         
-      - uses: ./.github/actions/setup
+  #     - uses: ./.github/actions/setup
 
-      - name: Run pipeline
-        run: uv run ipython notebooks/1_feature_engineering.ipynb
-        env:
-          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+  #     - name: Run pipeline
+  #       run: uv run ipython notebooks/1_feature_engineering.ipynb
+  #       env:
+  #         HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
-  train_retrieval:
-    needs: feature_engineering
-    name: Train Retrieval Model
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+  # train_retrieval:
+  #   needs: feature_engineering
+  #   name: Train Retrieval Model
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
         
-      - uses: ./.github/actions/setup
+  #     - uses: ./.github/actions/setup
 
-      - name: Run pipeline
-        run: uv run ipython notebooks/2_train_retrieval_model.ipynb
-        env:
-          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+  #     - name: Run pipeline
+  #       run: uv run ipython notebooks/2_train_retrieval_model.ipynb
+  #       env:
+  #         HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
-  create_embeddings:
-    needs: train_retrieval
-    name: Create Embeddings
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+  # create_embeddings:
+  #   needs: train_retrieval
+  #   name: Create Embeddings
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
         
-      - uses: ./.github/actions/setup
+  #     - uses: ./.github/actions/setup
 
-      - name: Run pipeline
-        run: uv run ipython notebooks/3_embeddings_creation.ipynb
-        env:
-          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+  #     - name: Run pipeline
+  #       run: uv run ipython notebooks/3_embeddings_creation.ipynb
+  #       env:
+  #         HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
   train_ranking:
     needs: create_embeddings
