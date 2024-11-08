@@ -3,9 +3,9 @@ name: ML Pipelines
 on:
   schedule:
     - cron: '0 * * * *'  # Runs every hour
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   workflow_dispatch:  # Allows manual triggering from GitHub UI
       
 concurrency:
