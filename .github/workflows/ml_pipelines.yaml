@@ -13,39 +13,49 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ml_pipelines:
-    name: ML Pipelines
+  feature_engineering:
+    name: Feature Engineering
     runs-on: ubuntu-latest
-    env:
-      PIPELINES: |
-        notebooks/1_feature_engineering.ipynb
-        notebooks/2_train_retrieval_model.ipynb
-        notebooks/3_embeddings_creation.ipynb
-        notebooks/4_train_ranking_model.ipynb
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v3
-        with:
-          version: 0.4.30
-
-      - name: Create and activate virtual environment
-        run: |
-          uv venv
-          source .venv/bin/activate
-
-      - name: Install the project
-        run: |
-          make install
+      - uses: ./.github/actions/setup
 
       - name: Run pipeline
-        run: |
-          for pipeline in $PIPELINES; do
-            uv run ipython "$pipeline"
-          done
+        run: uv run ipython notebooks/1_feature_engineering.ipynb
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
+  train_retrieval:
+    needs: feature_engineering
+    name: Train Retrieval Model
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/setup
+
+      - name: Run pipeline
+        run: uv run ipython notebooks/2_train_retrieval_model.ipynb
+        env:
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+
+  create_embeddings:
+    needs: train_retrieval
+    name: Create Embeddings
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/setup
+
+      - name: Run pipeline
+        run: uv run ipython notebooks/3_embeddings_creation.ipynb
+        env:
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+
+  train_ranking:
+    needs: create_embeddings
+    name: Train Ranking Model
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/setup
+
+      - name: Run pipeline
+        run: uv run ipython notebooks/4_train_ranking_model.ipynb
+        env:
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
