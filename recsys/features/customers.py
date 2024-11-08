@@ -1,4 +1,20 @@
+from enum import Enum
+
 import polars as pl
+
+
+class DatasetSize(Enum):
+    LARGE = "LARGE"
+    MEDIUM = "MEDIUM"
+    SMALL = "SMALL"
+
+    def get_size(self) -> dict["DatasetSize", int]:
+        return {
+            DatasetSize.LARGE: 50_000,
+            DatasetSize.MEDIUM: 5_000,
+            DatasetSize.SMALL: 1_000,
+        }[self]
+
 
 def fill_missing_club_member_status(df: pl.DataFrame) -> pl.DataFrame:
     """
@@ -10,7 +26,8 @@ def fill_missing_club_member_status(df: pl.DataFrame) -> pl.DataFrame:
     Returns:
     - pl.DataFrame: DataFrame with filled 'club_member_status' column.
     """
-    return df.with_columns(pl.col('club_member_status').fill_null('ABSENT'))
+    return df.with_columns(pl.col("club_member_status").fill_null("ABSENT"))
+
 
 def drop_na_age(df: pl.DataFrame) -> pl.DataFrame:
     """
@@ -22,7 +39,8 @@ def drop_na_age(df: pl.DataFrame) -> pl.DataFrame:
     Returns:
     - pl.DataFrame: DataFrame with rows containing null 'age' values removed.
     """
-    return df.drop_nulls(subset=['age'])
+    return df.drop_nulls(subset=["age"])
+
 
 def create_age_group() -> pl.Expr:
     """
@@ -32,14 +50,21 @@ def create_age_group() -> pl.Expr:
     - pl.Expr: Polars expression that categorizes 'age' into predefined age groups.
     """
     return (
-        pl.when(pl.col('age').is_between(0, 18)).then(pl.lit('0-18'))
-        .when(pl.col('age').is_between(19, 25)).then(pl.lit('19-25'))
-        .when(pl.col('age').is_between(26, 35)).then(pl.lit('26-35'))
-        .when(pl.col('age').is_between(36, 45)).then(pl.lit('36-45'))
-        .when(pl.col('age').is_between(46, 55)).then(pl.lit('46-55'))
-        .when(pl.col('age').is_between(56, 65)).then(pl.lit('56-65'))
-        .otherwise(pl.lit('66+'))
-    ).alias('age_group')
+        pl.when(pl.col("age").is_between(0, 18))
+        .then(pl.lit("0-18"))
+        .when(pl.col("age").is_between(19, 25))
+        .then(pl.lit("19-25"))
+        .when(pl.col("age").is_between(26, 35))
+        .then(pl.lit("26-35"))
+        .when(pl.col("age").is_between(36, 45))
+        .then(pl.lit("36-45"))
+        .when(pl.col("age").is_between(46, 55))
+        .then(pl.lit("46-55"))
+        .when(pl.col("age").is_between(56, 65))
+        .then(pl.lit("56-65"))
+        .otherwise(pl.lit("66+"))
+    ).alias("age_group")
+
 
 def prepare_customers(df: pl.DataFrame) -> pl.DataFrame:
     """
@@ -62,17 +87,18 @@ def prepare_customers(df: pl.DataFrame) -> pl.DataFrame:
     Raises:
     - ValueError: If any of the required columns are missing from the input DataFrame.
     """
-    required_columns = ['customer_id', 'club_member_status', 'age', 'postal_code']
+    required_columns = ["customer_id", "club_member_status", "age", "postal_code"]
     missing_columns = [col for col in required_columns if col not in df.columns]
     if missing_columns:
-        raise ValueError(f"Columns {', '.join(missing_columns)} not found in the DataFrame")
-    
+        raise ValueError(
+            f"Columns {', '.join(missing_columns)} not found in the DataFrame"
+        )
+
     return (
         df.pipe(fill_missing_club_member_status)
         .pipe(drop_na_age)
-        .with_columns([
-            create_age_group(),
-            pl.col('age').cast(pl.Float64)
-        ])
-        .select(['customer_id', 'club_member_status', 'age', 'postal_code', 'age_group'])
+        .with_columns([create_age_group(), pl.col("age").cast(pl.Float64)])
+        .select(
+            ["customer_id", "club_member_status", "age", "postal_code", "age_group"]
+        )
     )

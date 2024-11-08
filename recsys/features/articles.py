@@ -1,10 +1,9 @@
-import polars as pl
-import torch
-from sentence_transformers import SentenceTransformer
-from tqdm.auto import tqdm
 import contextlib
 import io
 import sys
+
+import polars as pl
+from tqdm.auto import tqdm
 
 
 def get_article_id(df: pl.DataFrame) -> pl.Series:
@@ -72,8 +71,8 @@ def prepare_articles(df: pl.DataFrame) -> pl.DataFrame:
 
 
 def generate_embeddings_for_dataframe(
-    df, text_column, model, device: str, batch_size: int = 32
-):
+    df: pl.DataFrame, text_column, model, device: str, batch_size: int = 32
+) -> pl.DataFrame:
     """
     Generate embeddings for a text column in a Polars DataFrame.
 
@@ -98,23 +97,13 @@ def generate_embeddings_for_dataframe(
         finally:
             sys.stdout = old_stdout
 
-    # def generate_embedding(text):
-    #     with suppress_stdout():
-    #         return model.encode(text, device=device, show_progress_bar=False).tolist()
-
     total_rows = len(df)
     pbar = tqdm(total=total_rows, desc="Generating embeddings")
 
-    # def generate_embedding_with_progress(text):
-    #     embedding = generate_embedding(text)
-    #     pbar.update(1)
-    #     return embedding
-
     # Create a new column with embeddings
-    # Process in batches of 32 texts at a time
     texts = df[text_column].to_list()
-    all_embeddings = []
 
+    all_embeddings = []
     for i in range(0, len(texts), batch_size):
         batch_texts = texts[i : i + batch_size]
         with suppress_stdout():

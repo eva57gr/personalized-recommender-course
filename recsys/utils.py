@@ -1,6 +1,6 @@
 import os
-import hopsworks
 
+import hopsworks
 from loguru import logger
 
 
@@ -13,4 +13,4 @@ def get_hopsworks_feature_store():
         logger.info("Login to Hopsworks using cached API KEY.")
         project = hopsworks.login()
 
-    return project.get_feature_store()
+    return project, project.get_feature_store()
