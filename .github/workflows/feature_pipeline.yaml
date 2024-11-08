@@ -15,29 +15,22 @@ jobs:
   ml_pipelines:
     name: ML Pipelines
     runs-on: ubuntu-latest
-    
+    strategy:
+        matrix:
+          ml_pipeline: [
+            'notebooks/1_feature_engineering.ipynb',
+            'notebooks/2_training_pipeline.ipynb',
+            'notebooks/3_inference_pipeline.ipynb'
+          ]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
       - name: Install uv
         uses: astral-sh/setup-uv@v3
         with:
           version: 0.4.30
-          
-      - name: Get notebook list
-        id: ml_pipelines
-        run: |
-          echo "ml_pipelines=$(ls notebooks/*.ipynb | sort -n | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
 
-  run_pipelines:
-    needs: ml_pipelines
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ml_pipeline: ${{ fromJson(needs.ml_pipelines.outputs.ml_pipelines) }}
-
-    steps:
       - name: Set up Python
         run: uv python install
 
@@ -49,3 +42,4 @@ jobs:
         run: uv run ipython ${{ matrix.ml_pipeline }}
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+
