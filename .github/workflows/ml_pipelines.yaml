@@ -1,23 +1,12 @@
-name: ML Pipelines
-
-on:
-  schedule:
-    - cron: '0 */2 * * *'  # Runs every two hours
-  push:
-    branches:
-      - main
-  workflow_dispatch:  # Allows manual triggering from GitHub UI
-      
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   feature_engineering:
     name: Feature Engineering
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/setup
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - uses: ./.github/actions/ml-setup
 
       - name: Run pipeline
         run: uv run ipython notebooks/1_feature_engineering.ipynb
@@ -29,7 +18,10 @@ jobs:
     name: Train Retrieval Model
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/setup
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - uses: ./.github/actions/ml-setup
 
       - name: Run pipeline
         run: uv run ipython notebooks/2_train_retrieval_model.ipynb
@@ -41,7 +33,10 @@ jobs:
     name: Create Embeddings
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/setup
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - uses: ./.github/actions/ml-setup
 
       - name: Run pipeline
         run: uv run ipython notebooks/3_embeddings_creation.ipynb
@@ -53,7 +48,10 @@ jobs:
     name: Train Ranking Model
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/setup
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - uses: ./.github/actions/ml-setup
 
       - name: Run pipeline
         run: uv run ipython notebooks/4_train_ranking_model.ipynb
