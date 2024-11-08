@@ -58,7 +58,7 @@ jobs:
   #         HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
   train_ranking:
-    needs: create_embeddings
+    # needs: create_embeddings
     name: Train Ranking Model
     runs-on: ubuntu-latest
     steps:
