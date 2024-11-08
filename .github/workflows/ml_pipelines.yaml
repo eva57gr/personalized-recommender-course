@@ -1,3 +1,17 @@
+name: ML Pipelines
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'  # Runs every two hours
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual triggering from GitHub UI
+      
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   feature_engineering:
     name: Feature Engineering
