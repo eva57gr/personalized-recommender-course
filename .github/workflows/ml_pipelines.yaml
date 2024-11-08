@@ -2,7 +2,7 @@ name: ML Pipelines
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs every hour
+    - cron: '0 */2 * * *'  # Runs every two hours
   push:
     branches:
       - main
