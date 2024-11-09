@@ -6,7 +6,7 @@
 
 ## Cloud Dependencies
 
-- [Hopsworks](https://www.hopsworks.ai/): Create an account an generate an API key.
+- [Hopsworks](https://www.hopsworks.ai/): Create an account an generate an API key. We will stick to their freemium plan.
 
 # Install
 
