@@ -4,6 +4,10 @@
 - [uv v0.4.30](https://github.com/astral-sh/uv)
 - [GNU Make 3.81](https://www.gnu.org/software/make/)
 
+## Cloud Dependencies
+
+- [Hopsworks](https://www.hopsworks.ai/): Create an account an generate an API key.
+
 # Install
 
 To set up the project environment:
