@@ -1,9 +1,8 @@
 name: ML Pipelines
 
 on:
-  schedule: # Uncomment to run the pipelines every two hours
-    # - cron: '0 */2 * * *'
-    - cron: '*/30 * * * *'  
+  # schedule: # Uncomment to run the pipelines every two hours. All the pipelines take ~1.5 hours to run.
+  #   - cron: '0 */2 * * *'
   # push: # Uncomment to run pipelines on every new commit
   #   branches:
   #     - main

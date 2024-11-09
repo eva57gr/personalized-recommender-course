@@ -1,8 +1,12 @@
+import os
+
 import tensorflow as tf
 from hsml.model_schema import ModelSchema
 from hsml.schema import Schema
+from hsml.transformer import Transformer
 
 from recsys.models.two_tower import ItemTower, QueryTower
+from recsys.settings import RECSYS_DIR
 
 
 class QueryModelModule(tf.Module):
@@ -20,7 +24,7 @@ class QueryModelModule(tf.Module):
             "query_emb": query_emb,
         }
 
-    def save_local(self, output_path: str = "query_model") -> str:
+    def save_to_local(self, output_path: str = "query_model") -> str:
         # Define the input specifications for the instances
         instances_spec = {
             "customer_id": tf.TensorSpec(
@@ -49,8 +53,8 @@ class QueryModelModule(tf.Module):
 
         return output_path
 
-    def save_hopsworks(self, mr, query_df, emb_dim) -> None:
-        local_model_path = self.save_local()
+    def save_to_hopsworks(self, mr, query_df, emb_dim) -> None:
+        local_model_path = self.save_to_local()
 
         # Each model needs to be set up with a
         # [Model Schema](https://docs.hopsworks.ai/machine-learning-api/latest/generated/model_schema/),
@@ -89,21 +93,61 @@ class QueryModelModule(tf.Module):
         # Save the query_model to the Model Registry
         mr_query_model.save(local_model_path)  # Path to save the model
 
+    @classmethod
+    def deploy_to_hopsworks(cls, project):
+        mr = project.get_model_registry()
+        dataset_api = project.get_dataset_api()
+
+        # Retrieve the 'query_model' from the Model Registry
+        query_model = mr.get_model(
+            name="query_model",
+            version=1,
+        )
+
+        # Copy transformer file into Hopsworks File System
+        uploaded_file_path = dataset_api.upload(
+            str(RECSYS_DIR / "inference" / "query_transformer.py"),
+            "Models",
+            overwrite=True,
+        )
+
+        # Construct the path to the uploaded script
+        transformer_script_path = os.path.join(
+            "/Projects",
+            project.name,
+            uploaded_file_path,
+        )
+
+        query_model_transformer = Transformer(
+            script_file=transformer_script_path,
+            resources={"num_instances": 0},
+        )
+
+        # Deploy the query model
+        query_model_deployment = query_model.deploy(
+            name="querydeployment",
+            description="Deployment that generates query embeddings from customer and item features using the query model",
+            resources={"num_instances": 0},
+            transformer=query_model_transformer,
+        )
+
+        return query_model_deployment
+
 
 class CandidateModelModule(tf.Module):
     def __init__(self, item_model: ItemTower):
         self.item_model = item_model
 
-    def save_local(self, output_path: str = "candidate_model") -> str:
+    def save_to_local(self, output_path: str = "candidate_model") -> str:
         tf.saved_model.save(
             self.item_model,  # The model to save
             output_path,  # Path to save the model
         )
 
         return output_path
-    
-    def save_hopsworks(self, mr, item_df, emb_dim):
-        local_model_path = self.save_local()
+
+    def save_to_hopsworks(self, mr, item_df, emb_dim):
+        local_model_path = self.save_to_local()
 
         # Define the input schema for the candidate_model based on item_df
         candidate_model_input_schema = Schema(item_df)
@@ -138,3 +182,16 @@ class CandidateModelModule(tf.Module):
 
         # Save the candidate_model to the Model Registry
         mr_candidate_model.save(local_model_path)  # Path to save the model
+
+    @classmethod
+    def load_from_hopsworks(cls, mr) -> tuple[ItemTower, dict]:
+        model = mr.get_model(
+            name="candidate_model",
+            version=1,
+        )
+        model_path = model.download()
+
+        candidate_model = tf.saved_model.load(model_path)
+        model_schema = model.model_schema
+
+        return candidate_model, model_schema
