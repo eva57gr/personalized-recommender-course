@@ -1,5 +1,3 @@
-# hands-on-recommender-system
-
 # Dependencies
 
 - [Python v3.11](https://www.python.org/downloads/)
