@@ -3,6 +3,7 @@ import os
 
 import streamlit as st
 
+from recsys.config import settings
 from recsys.ui.feature_group_updater import get_fg_updater
 from recsys.ui.interaction_tracker import get_tracker
 from recsys.ui.recommenders import customer_recommendations, llm_recommendations
@@ -55,9 +56,16 @@ def show_interaction_dashboard(tracker, fg_updater, page_selection):
     """Display interaction data and controls"""
     with st.sidebar.expander("📊 Interaction Dashboard", expanded=True):
         if page_selection == "LLM Recommendations":
-            api_key = st.text_input(
-                "🔑 OpenAI API Key:", type="password", key="openai_api_key"
+            api_key = (
+                settings.OPENAI_API_KEY.get_secret_value()
+                if settings.OPENAI_API_KEY
+                and settings.OPENAI_API_KEY.get_secret_value()
+                else None
             )
+            if not api_key:
+                api_key = st.text_input(
+                    "🔑 OpenAI API Key:", type="password", key="openai_api_key"
+                )
             if api_key:
                 os.environ["OPENAI_API_KEY"] = api_key
             else:

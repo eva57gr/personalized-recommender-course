@@ -37,9 +37,14 @@ make all
 This will execute the following steps in order:
 1. Feature Engineering
 2. Retrieval Model Training
-3. Embeddings Creation
-4. Ranking Model Training
+3. Ranking Model Training
+4. Embeddings Creation
 5. Deployment Creation
+6. Schedule Materialization Jobs
+
+### Individual Pipeline Components
+
+You can also run each component separately:
 
 ### Individual Pipeline Components
 
@@ -49,31 +54,37 @@ You can also run each component separately:
    ```bash
    make feature-engineering
    ```
-   Executes the feature engineering notebook (`notebooks/1_feature_engineering.ipynb`)
+   Executes the feature engineering notebook (`notebooks/1_fp_computing_features.ipynb`)
 
 2. **Train Retrieval Model**
    ```bash
    make train-retrieval
    ```
-   Trains the retrieval model using `notebooks/2_train_retrieval_model.ipynb`
+   Trains the retrieval model using `notebooks/2_tp_training_retrieval_model.ipynb`
 
-3. **Create Embeddings**
-   ```bash
-   make create-embeddings
-   ```
-   Generates embeddings using `notebooks/3_embeddings_creation.ipynb`
-
-4. **Train Ranking Model**
+3. **Train Ranking Model**
    ```bash
    make train-ranking
    ```
-   Trains the ranking model using `notebooks/4_train_ranking_model.ipynb`
+   Trains the ranking model using `notebooks/3_tp_training_ranking_model.ipynb`
+
+4. **Create Embeddings**
+   ```bash
+   make create-embeddings
+   ```
+   Generates embeddings using `notebooks/4_fp_computing_item_embeddings.ipynb`
 
 5. **Create Deployments**
    ```bash
    make create-deployments
    ```
-   Sets up model deployments using `notebooks/5_create_deployments.ipynb`
+   Sets up model deployments using `notebooks/5_ip_creating_deployments.ipynb`
+
+6. **Schedule Materialization Jobs**
+   ```bash
+   make schedule-materialization-jobs
+   ```
+   Schedules materialization jobs using `notebooks/6_scheduling_materialization_jobs.ipynb`
 
 ### Notes
 - All notebooks are executed using IPython through the UV virtual environment
@@ -85,7 +96,7 @@ You can also run each component separately:
 To launch the Streamlit application that uses the feature store and fine-tuned models, run:
 
 ```bash
-make run-app
+make start-ui
 ```
 
 ## Clean Hopsworks resources
