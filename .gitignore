@@ -163,3 +163,6 @@ candidate_model
 query_model
 ranking_model.pkl
 catboost_info
+
+# MacOS
+.DS_Store
