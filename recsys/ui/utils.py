@@ -1,7 +1,6 @@
 import re
 from io import BytesIO
 
-import hopsworks
 import requests
 import streamlit as st
 from PIL import Image, UnidentifiedImageError
@@ -37,7 +36,7 @@ def get_item_image_url(item_id, articles_fv):
 @st.cache_resource()
 def get_deployments():
     project, fs = hopsworks_integration.get_feature_store()
-    
+
     ms = project.get_model_serving()
 
     articles_fv = fs.get_feature_view(

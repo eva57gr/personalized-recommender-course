@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   feature_engineering:
-    name: Feature Engineering
+    name: Compute Features
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -57,9 +57,9 @@ jobs:
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
-  create_embeddings:
+  computing_and_indexing_embeddings:
     needs: train_retrieval
-    name: Create Embeddings
+    name: Compute & Index Embeddings
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -69,5 +69,20 @@ jobs:
 
       - name: Run pipeline
         run: uv run ipython notebooks/4_fp_computing_item_embeddings.ipynb
+        env:
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+
+  create_deployments:
+    needs: computing_and_indexing_embeddings
+    name: Create Deployments
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - uses: ./.github/actions/setup
+
+      - name: Run pipeline
+        run: uv run ipython notebooks/5_ip_creating_deployments.ipynb
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}

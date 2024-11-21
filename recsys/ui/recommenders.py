@@ -439,4 +439,5 @@ def llm_recommendations(articles_fv, api_key, customer_id):
 def get_similar_items(description, embedding_model, articles_fv):
     """Get similar items based on description embedding"""
     description_embedding = embedding_model.encode(description)
+    
     return articles_fv.find_neighbors(description_embedding, k=25)
