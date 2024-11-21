@@ -24,4 +24,4 @@ runs:
     - name: Install the project
       shell: bash
       run: |
-        make install
+        uv pip install --all-extras --requirement pyproject.toml
