@@ -59,7 +59,7 @@ jobs:
 
   computing_and_indexing_embeddings:
     needs: train_retrieval
-    name: Compute & Index Embeddings
+    name: Compute Embeddings
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
