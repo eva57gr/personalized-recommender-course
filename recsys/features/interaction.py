@@ -170,6 +170,5 @@ def generate_interaction_data(trans_df):
             .fill_null("START")
         ]
     )
-
-    print("✅ Done!")
+    
     return final_df

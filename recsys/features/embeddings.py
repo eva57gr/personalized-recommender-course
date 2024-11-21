@@ -16,25 +16,24 @@ def preprocess(train_df: pd.DataFrame, model_schema) -> pd.DataFrame:
     return item_df
 
 
-def postprocess(candidate_embeddings) -> pd.DataFrame:
-    # Concatenate all article IDs and embeddings from the candidate_embeddings dataset
+def embed(df: pd.DataFrame, candidate_model) -> pd.DataFrame:
+    ds = tf.data.Dataset.from_tensor_slices({col: df[col] for col in df})
+
+    candidate_embeddings = ds.batch(2048).map(
+        lambda x: (x["article_id"], candidate_model(x))
+    )
+
     all_article_ids = tf.concat([batch[0] for batch in candidate_embeddings], axis=0)
     all_embeddings = tf.concat([batch[1] for batch in candidate_embeddings], axis=0)
 
-    # Convert tensors to numpy arrays
-    all_article_ids_np = all_article_ids.numpy().astype(int)
-    all_embeddings_np = all_embeddings.numpy()
+    all_article_ids = all_article_ids.numpy().astype(int).tolist()
+    all_embeddings = all_embeddings.numpy().tolist()
 
-    # Convert numpy arrays to lists
-    items_ids_list = all_article_ids_np.tolist()
-    embeddings_list = all_embeddings_np.tolist()
-
-    # Create a DataFrame
-    data_emb = pd.DataFrame(
+    embeddings_df = pd.DataFrame(
         {
-            "article_id": items_ids_list,
-            "embeddings": embeddings_list,
+            "article_id": all_article_ids,
+            "embeddings": all_embeddings,
         }
     )
 
-    return data_emb
+    return embeddings_df

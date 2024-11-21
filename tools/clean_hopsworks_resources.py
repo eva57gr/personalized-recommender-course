@@ -59,7 +59,7 @@ for feature_group in [
     "articles",
     "transactions",
     "interactions",
-    "candidate_embeddings_fg",
+    "candidate_embeddings",
     "ranking",
 ]:
     # Get all feature groups

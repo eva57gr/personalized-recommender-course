@@ -1,35 +1,12 @@
-import streamlit as st
-import os
-from IPython import get_ipython
-
-
-def need_download_modules():
-    if "google.colab" in str(get_ipython()):
-        return True
-    return False
-
-
-if need_download_modules():
-    print("📥 Downloading modules")
-    os.system("mkdir -p functions")
-    os.system(
-        "cd functions && wget https://raw.githubusercontent.com/Maxxx-zh/hopsworks-tutorials/refs/heads/FSTORE-1565/advanced_tutorials/recommender-system/functions/feature_group_updater.py"
-    )
-    os.system(
-        "cd functions && wget https://raw.githubusercontent.com/Maxxx-zh/hopsworks-tutorials/refs/heads/FSTORE-1565/advanced_tutorials/recommender-system/functions/interaction_tracker.py"
-    )
-    os.system(
-        "cd functions && wget https://raw.githubusercontent.com/Maxxx-zh/hopsworks-tutorials/refs/heads/FSTORE-1565/advanced_tutorials/recommender-system/functions/recommenders.py"
-    )
-    os.system(
-        "cd functions && wget https://raw.githubusercontent.com/Maxxx-zh/hopsworks-tutorials/refs/heads/FSTORE-1565/advanced_tutorials/recommender-system/functions/utils.py"
-    )
-
-from recsys.functions.utils import get_deployments
-from recsys.functions.recommenders import customer_recommendations, llm_recommendations
-from recsys.functions.interaction_tracker import get_tracker
-from recsys.functions.feature_group_updater import get_fg_updater
 import logging
+import os
+
+import streamlit as st
+
+from recsys.ui.feature_group_updater import get_fg_updater
+from recsys.ui.interaction_tracker import get_tracker
+from recsys.ui.recommenders import customer_recommendations, llm_recommendations
+from recsys.ui.utils import get_deployments
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -37,11 +14,11 @@ logger = logging.getLogger(__name__)
 
 # Constants
 CUSTOMER_IDS = [
-    "641e6f3ef3a2d537140aaa0a06055ae328a0dddf2c2c0dd6e60eb0563c7cbba0",
-    "1fdadbb8aa9910222d9bc1e1bd6fb1bd9a02a108cb0e899b640780f32d8f7d83",
-    "7b0621c12c65570bdc4eadd3fca73f081e2da5769f0d31585ac301cea58af53f",
-    "675cd49509ef9692d793af738c08d9bce0856036b9e988cba4e26422944314d6",
-    "895576481a1095ad66ab3279483f4323724e9d53d9f089b16f289a3f660c1101",
+    "9e619265e3ae0d2ef96a71577c4aff3474bfa7dd0d60486b42bc8f921c3387c0",
+    "a1f7201399574e78b0a1575c50e3b68d116f84e24c0f70c957083da99db6ab5f",
+    "19fa659096de20f0c022b9727779e849813ccc82952b3d56e212ab18fa2c0bf3",
+    "d9448c8585f1678937deb5118d95b09bf6f41fe00a65b1fb82c7d176c6bfc532",
+    "b41d990c8a127dac386dd6c9f2a6ec4ac41185cd21ef2df0a952a8cbdf61ed5d",
 ]
 
 

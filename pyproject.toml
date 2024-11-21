@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = "~=3.11"
 dependencies = [
+    "altair>=4.2.2",
     "catboost==1.2",
     "hopsworks>=3.7.0",
     "huggingface-hub==0.24.7",
@@ -12,6 +13,7 @@ dependencies = [
     "langchain==0.2.6",
     "loguru>=0.7.2",
     "polars==1.9.0",
+    "pydantic-settings>=2.6.1",
     "sentence-transformers==2.2.2",
     "streamlit==1.28.2",
     "tensorflow-recommenders==0.7.2",

@@ -5,6 +5,8 @@ from io import BytesIO
 import re
 import hopsworks
 
+from recsys import inference
+
 def print_header(text, font_size=22):
     res = f'<span style="font-size: {font_size}px;">{text}</span>'
     st.markdown(res, unsafe_allow_html=True)
@@ -38,8 +40,8 @@ def get_deployments():
         version=1,
     )
 
-    query_model_deployment = ms.get_deployment("querydeployment")
-    ranking_deployment = ms.get_deployment("rankingdeployment")
+    query_model_deployment = ms.get_deployment(inference.two_tower_serving.HopsworksQueryModel.deployment_name)
+    ranking_deployment = ms.get_deployment(inference.ranking_serving.HopsworksRankingModel.deployment_name)
     
     ranking_deployment.start(await_running=180)
     query_model_deployment.start(await_running=180)

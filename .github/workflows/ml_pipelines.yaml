@@ -23,7 +23,7 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Run pipeline
-        run: uv run ipython notebooks/1_feature_engineering.ipynb
+        run: uv run ipython notebooks/1_fp_computing_features.ipynb
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
@@ -38,7 +38,22 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Run pipeline
-        run: uv run ipython notebooks/2_train_retrieval_model.ipynb
+        run: uv run ipython notebooks/2_tp_training_retrieval_model.ipynb
+        env:
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+
+  train_ranking:
+    needs: feature_engineering
+    name: Train Ranking Model
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - uses: ./.github/actions/setup
+
+      - name: Run pipeline
+        run: uv run ipython notebooks/3_tp_training_ranking_model.ipynb
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
@@ -53,21 +68,6 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Run pipeline
-        run: uv run ipython notebooks/3_embeddings_creation.ipynb
-        env:
-          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
-
-  train_ranking:
-    needs: create_embeddings
-    name: Train Ranking Model
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        
-      - uses: ./.github/actions/setup
-
-      - name: Run pipeline
-        run: uv run ipython notebooks/4_train_ranking_model.ipynb
+        run: uv run ipython notebooks/4_fp_computing_item_embeddings.ipynb
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}

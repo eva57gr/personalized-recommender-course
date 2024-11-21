@@ -5,10 +5,12 @@ from hsml.model_schema import ModelSchema
 from hsml.schema import Schema
 from hsml.transformer import Transformer
 
-from recsys.settings import RECSYS_DIR
+from recsys.config import settings
 
 
-class RankingModelModule:
+class HopsworksRankingModel:
+    deployment_name = "ranking"
+
     def __init__(self, model):
         self._model = model
 
@@ -17,7 +19,7 @@ class RankingModelModule:
 
         return output_path
 
-    def save_to_hopsworks(self, mr, X_train, y_train, metrics):
+    def register(self, mr, X_train, y_train, metrics):
         local_model_path = self.save_to_local()
 
         input_example = X_train.sample().to_dict("records")
@@ -35,7 +37,7 @@ class RankingModelModule:
         ranking_model.save(local_model_path)
 
     @classmethod
-    def deploy_to_hopsworks(cls, project):
+    def deploy(cls, project):
         mr = project.get_model_registry()
         dataset_api = project.get_dataset_api()
 
@@ -48,7 +50,7 @@ class RankingModelModule:
         # Copy transformer file into Hopsworks File System
         uploaded_file_path = dataset_api.upload(
             str(
-                RECSYS_DIR / "inference" / "ranking_transformer.py"
+                settings.RECSYS_DIR / "inference" / "ranking_transformer.py"
             ),  # File name to be uploaded
             "Resources",  # Destination directory in Hopsworks File System
             overwrite=True,  # Overwrite the file if it already exists
@@ -62,7 +64,7 @@ class RankingModelModule:
 
         # Upload predictor file to Hopsworks
         uploaded_file_path = dataset_api.upload(
-            str(RECSYS_DIR / "inference" / "ranking_predictor.py"),
+            str(settings.RECSYS_DIR / "inference" / "ranking_predictor.py"),
             "Resources",
             overwrite=True,
         )
@@ -81,7 +83,7 @@ class RankingModelModule:
 
         # Deploy ranking model
         ranking_deployment = ranking_model.deploy(
-            name="rankingdeployment",
+            name=cls.deployment_name,
             description="Deployment that search for item candidates and scores them based on customer metadata",
             script_file=predictor_script_path,
             resources={"num_instances": 0},

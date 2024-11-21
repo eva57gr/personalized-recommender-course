@@ -113,7 +113,7 @@ def convert_t_dat_to_epoch_milliseconds(df: pl.DataFrame) -> pl.Series:
     return df["t_dat"].cast(pl.Int64) // 1_000_000
 
 
-def prepare_transactions(df: pl.DataFrame) -> pl.DataFrame:
+def compute_features_transactions(df: pl.DataFrame) -> pl.DataFrame:
     """
     Prepare transaction data by performing several data transformations.
 
@@ -130,6 +130,7 @@ def prepare_transactions(df: pl.DataFrame) -> pl.DataFrame:
     Returns:
     - pl.DataFrame: Processed DataFrame with transformed transaction data.
     """
+
     return (
         df.with_columns(
             [

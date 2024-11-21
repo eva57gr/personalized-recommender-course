@@ -4,6 +4,7 @@ import sys
 
 import polars as pl
 from tqdm.auto import tqdm
+from sentence_transformers import SentenceTransformer
 
 
 def get_article_id(df: pl.DataFrame) -> pl.Series:
@@ -40,7 +41,7 @@ def create_article_description(row):
     return description
 
 
-def prepare_articles(df: pl.DataFrame) -> pl.DataFrame:
+def compute_features_articles(df: pl.DataFrame) -> pl.DataFrame:
     """
     Prepares the input DataFrame by creating new features and dropping specific columns.
     Parameters:
@@ -59,6 +60,9 @@ def prepare_articles(df: pl.DataFrame) -> pl.DataFrame:
         ]
     )
 
+    # Add full image URLs.
+    df = df.with_columns(image_url=pl.col("article_id").map_elements(get_image_url))
+
     # Drop columns with null values
     df = df.select([col for col in df.columns if not df[col].is_null().any()])
 
@@ -71,7 +75,7 @@ def prepare_articles(df: pl.DataFrame) -> pl.DataFrame:
 
 
 def generate_embeddings_for_dataframe(
-    df: pl.DataFrame, text_column, model, device: str, batch_size: int = 32
+    df: pl.DataFrame, text_column: str, model: SentenceTransformer, batch_size: int = 32
 ) -> pl.DataFrame:
     """
     Generate embeddings for a text column in a Polars DataFrame.
@@ -79,8 +83,7 @@ def generate_embeddings_for_dataframe(
     Args:
     df (pl.DataFrame): Input Polars DataFrame
     text_column (str): Name of the column containing text to embed
-    model_name (str): Name of the SentenceTransformer model to use
-    device (str): Device to use for computation ('cuda' or 'cpu').
+    model (SentenceTransformer): SentenceTransformer embedding model to use
     batch_size (int): Number of samples run at once through the embedding model
 
     Returns:
@@ -108,7 +111,7 @@ def generate_embeddings_for_dataframe(
         batch_texts = texts[i : i + batch_size]
         with suppress_stdout():
             batch_embeddings = model.encode(
-                batch_texts, device=device, show_progress_bar=False
+                batch_texts, device=model.device, show_progress_bar=False
             )
         all_embeddings.extend(batch_embeddings.tolist())
         pbar.update(len(batch_texts))

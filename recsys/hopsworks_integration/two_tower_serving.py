@@ -1,28 +1,20 @@
 import os
 
+from loguru import logger
 import tensorflow as tf
 from hsml.model_schema import ModelSchema
 from hsml.schema import Schema
 from hsml.transformer import Transformer
 
-from recsys.models.two_tower import ItemTower, QueryTower
-from recsys.settings import RECSYS_DIR
+from recsys.config import settings
+from recsys.training.two_tower import ItemTower, QueryTower
 
 
-class QueryModelModule(tf.Module):
-    def __init__(self, query_model: QueryTower):
-        self.query_model = query_model
-
-    @tf.function()
-    def compute_emb(self, instances):
-        query_emb = self.query_model(instances)
-
-        return {
-            "customer_id": instances["customer_id"],
-            "month_sin": instances["month_sin"],
-            "month_cos": instances["month_cos"],
-            "query_emb": query_emb,
-        }
+class HopsworksQueryModel:
+    deployment_name = "query"
+    
+    def __init__(self, model: QueryTower) -> None:
+        self.model = model
 
     def save_to_local(self, output_path: str = "query_model") -> str:
         # Define the input specifications for the instances
@@ -41,19 +33,22 @@ class QueryModelModule(tf.Module):
             ),  # Specification for age
         }
 
+        query_module_module = QueryModelModule(model=self.model)
         # Get the concrete function for the query_model's compute_emb function using the specified input signatures
-        signatures = self.compute_emb.get_concrete_function(instances_spec)
+        inference_signatures = (
+            query_module_module.compute_embedding.get_concrete_function(instances_spec)
+        )
 
         # Save the query_model along with the concrete function signatures
         tf.saved_model.save(
-            self.query_model,  # The model to save
+            self.model,  # The model to save
             output_path,  # Path to save the model
-            signatures=signatures,  # Concrete function signatures to include
+            signatures=inference_signatures,  # Concrete function signatures to include
         )
 
         return output_path
 
-    def save_to_hopsworks(self, mr, query_df, emb_dim) -> None:
+    def register(self, mr, query_df, emb_dim) -> None:
         local_model_path = self.save_to_local()
 
         # Each model needs to be set up with a
@@ -94,7 +89,7 @@ class QueryModelModule(tf.Module):
         mr_query_model.save(local_model_path)  # Path to save the model
 
     @classmethod
-    def deploy_to_hopsworks(cls, project):
+    def deploy(cls, project):
         mr = project.get_model_registry()
         dataset_api = project.get_dataset_api()
 
@@ -106,7 +101,7 @@ class QueryModelModule(tf.Module):
 
         # Copy transformer file into Hopsworks File System
         uploaded_file_path = dataset_api.upload(
-            str(RECSYS_DIR / "inference" / "query_transformer.py"),
+            str(settings.RECSYS_DIR / "inference" / "query_transformer.py"),
             "Models",
             overwrite=True,
         )
@@ -125,7 +120,7 @@ class QueryModelModule(tf.Module):
 
         # Deploy the query model
         query_model_deployment = query_model.deploy(
-            name="querydeployment",
+            name=cls.deployment_name,
             description="Deployment that generates query embeddings from customer and item features using the query model",
             resources={"num_instances": 0},
             transformer=query_model_transformer,
@@ -134,19 +129,35 @@ class QueryModelModule(tf.Module):
         return query_model_deployment
 
 
-class CandidateModelModule(tf.Module):
-    def __init__(self, item_model: ItemTower):
-        self.item_model = item_model
+class QueryModelModule(tf.Module):
+    def __init__(self, model: QueryTower) -> None:
+        self.model = model
+
+    @tf.function()
+    def compute_embedding(self, instances):
+        query_embedding = self.model(instances)
+
+        return {
+            "customer_id": instances["customer_id"],
+            "month_sin": instances["month_sin"],
+            "month_cos": instances["month_cos"],
+            "query_emb": query_embedding,
+        }
+
+
+class HopsworksCandidateModel:
+    def __init__(self, model: ItemTower):
+        self.model = model
 
     def save_to_local(self, output_path: str = "candidate_model") -> str:
         tf.saved_model.save(
-            self.item_model,  # The model to save
+            self.model,  # The model to save
             output_path,  # Path to save the model
         )
 
         return output_path
 
-    def save_to_hopsworks(self, mr, item_df, emb_dim):
+    def register(self, mr, item_df, emb_dim):
         local_model_path = self.save_to_local()
 
         # Define the input schema for the candidate_model based on item_df
@@ -184,14 +195,16 @@ class CandidateModelModule(tf.Module):
         mr_candidate_model.save(local_model_path)  # Path to save the model
 
     @classmethod
-    def load_from_hopsworks(cls, mr) -> tuple[ItemTower, dict]:
-        model = mr.get_model(
-            name="candidate_model",
-            version=1,
-        )
-        model_path = model.download()
+    def download(cls, mr) -> tuple[ItemTower, dict]:
+        models = mr.get_models(name="candidate_model")
+        if len(models) == 0:
+            raise RuntimeError("No 'candidate_model' found in Hopsworks model registry.")
+        latest_model = max(models, key=lambda m: m.version)
+
+        logger.info(f"Downloading 'candidate_model' version {latest_model.version}")
+        model_path = latest_model.download()
 
         candidate_model = tf.saved_model.load(model_path)
-        model_schema = model.model_schema
+        model_schema = latest_model.model_schema
 
         return candidate_model, model_schema

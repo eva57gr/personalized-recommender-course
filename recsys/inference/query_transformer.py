@@ -5,7 +5,7 @@ import numpy as np
 
 
 class Transformer(object):
-    def __init__(self):
+    def __init__(self) -> None:
         # Connect to the Hopsworks
         project = hopsworks.connection().get_project()
         ms = project.get_model_serving()
@@ -17,7 +17,7 @@ class Transformer(object):
             version=1,
         )
         # Retrieve the ranking deployment
-        self.ranking_server = ms.get_deployment("rankingdeployment")
+        self.ranking_server = ms.get_deployment("ranking")
 
     def preprocess(self, inputs):
         # Check if the input data contains a key named "instances"

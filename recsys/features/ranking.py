@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def compute_ranking_dataset(trans_fg, articles_fg, customers_fg):
+def compute_ranking_dataset(trans_fg, articles_fg, customers_fg) -> pd.DataFrame:
     trans_df = trans_fg.select(
         ["article_id", "customer_id", "month_sin", "month_cos"]
     ).read()
