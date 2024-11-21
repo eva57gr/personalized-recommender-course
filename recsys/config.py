@@ -14,9 +14,10 @@ class CustomerDatasetSize(Enum):
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
-    HOPSWORKS_API_KEY: SecretStr | None = None
-
     RECSYS_DIR: Path = Path(__file__).parent
+
+    # Hopsworks
+    HOPSWORKS_API_KEY: SecretStr | None = None
 
     # Feature engineering
     CUSTOMER_DATA_SIZE: CustomerDatasetSize = CustomerDatasetSize.SMALL
@@ -31,7 +32,11 @@ class Settings(BaseSettings):
     TWO_TOWER_DATASET_VALIDATON_SPLIT_SIZE: float = 0.1
     TWO_TOWER_DATASET_TEST_SPLIT_SIZE: float = 0.1
 
-    TWO_TOWER_DATASET_VALIDATON_SPLIT_SIZE: float = 0.1
+    RANKING_DATASET_VALIDATON_SPLIT_SIZE: float = 0.1
+    RANKING_LEARNING_RATE: float = 0.2
+    RANKING_ITERATIONS: int = 100
+    RANKING_SCALE_POS_WEIGHT: int = 10
+    RANKING_EARLY_STOPPING_ROUNDS: int = 5
 
 
 settings = Settings()
