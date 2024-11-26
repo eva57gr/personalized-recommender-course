@@ -1121,7 +1121,7 @@ dev = [{ name = "ruff", specifier = ">=0.7.2" }]
 
 [[package]]
 name = "hopsworks"
-version = "3.7.0"
+version = "4.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "boto3" },
