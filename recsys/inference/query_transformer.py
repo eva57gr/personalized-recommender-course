@@ -19,7 +19,11 @@ class Transformer(object):
             name="customers",
             version=1,
         )
-        self.transactions_fv = fs.get_feature_view(name = "transactions", version=1)
+
+        # Retrieve  the "ranking" feature view and initialize the batch scoring server.
+        self.ranking_fv = fs.get_feature_view(name="ranking", version=1)
+        self.ranking_fv.init_serving(1)
+
         # Retrieve the ranking deployment
         self.ranking_server = ms.get_deployment("ranking")
 
@@ -50,13 +54,16 @@ class Transformer(object):
             transaction_date, "%Y-%m-%dT%H:%M:%S.%f"
         ).month
 
-        # Calculate the sine and cosine components for the month_of_purchase using on-demand transformation present in transactions feature view.
-        inputs = self.transactions_fv.compute_on_demand_features(feature_vector = pd.DataFrame(inputs), request_parameters={"month":month_of_purchase})
+        # Calculate the sine and cosine components for the month_of_purchase using on-demand transformation present in "ranking" feature view.
+        feature_vector = self.ranking_fv.compute_on_demand_features(
+            feature_vector=pd.DataFrame([inputs]), request_parameters={"month": month_of_purchase}
+        ).to_dict(orient="records")[0]
+
+        inputs["month_sin"] = feature_vector["month_sin"]
+        inputs["month_cos"] = feature_vector["month_cos"]
 
         return {"instances": [inputs]}
 
     def postprocess(self, outputs):
         # Return ordered ranking predictions
-        return self.ranking_server.predict(
-                inputs = outputs
-            )
+        return self.ranking_server.predict(inputs=outputs)
