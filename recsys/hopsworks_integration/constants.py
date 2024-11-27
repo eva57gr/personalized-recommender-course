@@ -57,14 +57,6 @@ ranking_feature_descriptions = [
     {"name": "customer_id", "description": "Unique identifier for each customer."},
     {"name": "article_id", "description": "Identifier for the purchased article."},
     {"name": "age", "description": "Age of the customer."},
-    {
-        "name": "month_sin",
-        "description": "Sine of the month used for seasonal patterns.",
-    },
-    {
-        "name": "month_cos",
-        "description": "Cosine of the month used for seasonal patterns.",
-    },
     {"name": "product_type_name", "description": "Name of the product type."},
     {"name": "product_group_name", "description": "Name of the product group."},
     {

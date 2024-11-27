@@ -109,13 +109,16 @@ def create_interactions_feature_group(
     return interactions_fg
 
 
-def create_ranking_feature_group(fs, df: pd.DataFrame, parents: list):
+def create_ranking_feature_group(
+    fs, df: pd.DataFrame, parents: list, online_enabled: bool = True
+):
     rank_fg = fs.get_or_create_feature_group(
         name="ranking",
         version=1,
         description="Derived feature group for ranking",
         primary_key=["customer_id", "article_id"],
         parents=parents,
+        online_enabled=online_enabled,
     )
     rank_fg.insert(df, write_options={"wait_for_job": True})
 
