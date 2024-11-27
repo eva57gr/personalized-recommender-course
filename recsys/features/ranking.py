@@ -1,7 +1,7 @@
 import polars as pl
 
 def compute_ranking_dataset(trans_fg, articles_fg, customers_fg) -> pl.DataFrame:
-    # Keep these reads unchanged as requested
+    # Read data from the feature groups
     trans_df = trans_fg.select(
         ["article_id", "customer_id"]
     ).read(dataframe_type="polars")
