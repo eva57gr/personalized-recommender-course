@@ -5,7 +5,7 @@ import numpy as np
 
 import nest_asyncio
 nest_asyncio.apply()
-import logging
+import pandas as pd
 
 class Transformer(object):
     def __init__(self) -> None:
@@ -19,6 +19,7 @@ class Transformer(object):
             name="customers",
             version=1,
         )
+        self.transactions_fv = fs.get_feature_view(name = "transactions", version=1)
         # Retrieve the ranking deployment
         self.ranking_server = ms.get_deployment("ranking")
 
@@ -49,12 +50,8 @@ class Transformer(object):
             transaction_date, "%Y-%m-%dT%H:%M:%S.%f"
         ).month
 
-        # Calculate a coefficient for adjusting the periodicity of the month
-        coef = np.random.uniform(0, 2 * np.pi) / 12
-
-        # Calculate the sine and cosine components for the month_of_purchase
-        inputs["month_sin"] = float(np.sin(month_of_purchase * coef))
-        inputs["month_cos"] = float(np.cos(month_of_purchase * coef))
+        # Calculate the sine and cosine components for the month_of_purchase using on-demand transformation present in transactions feature view.
+        inputs = self.transactions_fv.compute_on_demand_features(feature_vector = pd.DataFrame(inputs), request_parameters={"month":month_of_purchase})
 
         return {"instances": [inputs]}
 

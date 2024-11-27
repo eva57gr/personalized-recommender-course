@@ -1,10 +1,9 @@
 import polars as pl
-import numpy as np
 
 def compute_ranking_dataset(trans_fg, articles_fg, customers_fg) -> pl.DataFrame:
     # Keep these reads unchanged as requested
     trans_df = trans_fg.select(
-        ["article_id", "customer_id", "month_sin", "month_cos"]
+        ["article_id", "customer_id"]
     ).read(dataframe_type="polars")
     articles_df = articles_fg.select_except(
         ["article_description", "embeddings", "image_url"]
@@ -20,7 +19,7 @@ def compute_ranking_dataset(trans_fg, articles_fg, customers_fg) -> pl.DataFrame
     df = df.join(customers_df, on="customer_id", how="left")
 
     # Select query features
-    query_features = ["customer_id", "age", "month_sin", "month_cos", "article_id"]
+    query_features = ["customer_id", "age", "article_id"]
     df = df.select(query_features)
 
     # Create positive pairs
@@ -39,7 +38,7 @@ def compute_ranking_dataset(trans_fg, articles_fg, customers_fg) -> pl.DataFrame
                      .sample(n=n_neg, with_replacement=True, seed=3)
                      .get_column("customer_id"))
 
-    other_features = (df.select(["age", "month_sin", "month_cos"])
+    other_features = (df.select(["age"])
                        .sample(n=n_neg, with_replacement=True, seed=4))
 
     # Construct negative pairs
@@ -47,8 +46,6 @@ def compute_ranking_dataset(trans_fg, articles_fg, customers_fg) -> pl.DataFrame
         "article_id": article_ids,
         "customer_id": customer_ids,
         "age": other_features.get_column("age"),
-        "month_sin": other_features.get_column("month_sin"),
-        "month_cos": other_features.get_column("month_cos")
     })
 
     # Add labels

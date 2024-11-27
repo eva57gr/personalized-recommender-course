@@ -5,6 +5,7 @@ from loguru import logger
 
 from recsys.config import settings
 from recsys.hopsworks_integration import constants
+from recsys.features.transactions import month_cos, month_sin
 
 
 def get_feature_store():
@@ -74,6 +75,7 @@ def create_transactions_feature_group(
         description="Transactions data including customer, item, price, sales channel and transaction date",
         primary_key=["customer_id", "article_id"],
         online_enabled=online_enabled,
+        transformation_functions=[month_sin, month_cos],
         event_time="t_dat",
     )
     trans_fg.insert(df, write_options={"wait_for_job": True})
@@ -200,6 +202,10 @@ def create_ranking_feature_views(fs):
         version=1,
     )
 
+    trans_fg = fs.get_feature_group(
+        name="transactions",
+        version=1)
+
     selected_features_customers = customers_fg.select_all()
     fs.get_or_create_feature_view(
         name="customers",
@@ -215,7 +221,7 @@ def create_ranking_feature_views(fs):
     )
 
     # Select features
-    selected_features_ranking = rank_fg.select_except(["customer_id", "article_id"])
+    selected_features_ranking = rank_fg.select_except(["customer_id", "article_id"]).join(trans_fg.select(["month_sin", "month_cos"]))
     feature_view_ranking = fs.get_or_create_feature_view(
         name="ranking",
         query=selected_features_ranking,

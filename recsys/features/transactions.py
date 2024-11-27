@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import polars as pl
+from hopsworks import udf
 
 
 def convert_article_id_to_str(df: pl.DataFrame) -> pl.Series:
@@ -112,6 +113,32 @@ def convert_t_dat_to_epoch_milliseconds(df: pl.DataFrame) -> pl.Series:
     """
     return df["t_dat"].cast(pl.Int64) // 1_000_000
 
+@udf(return_type = float, mode="pandas")
+def month_sin(month :pd.Series):
+    """
+    On-demand transformation function that sine of month for cyclical feature encoding.
+
+    Parameters:
+    - month (pd.Series): A pandas series that contains the months
+
+    Returns:
+    - pd.Series: The sine of months
+    """
+    return np.sin(month * (2 * np.pi / 12))
+
+@udf(return_type = float, mode="pandas")
+def month_cos(month :pd.Series):
+    """
+    On-demand transformation function that sine of month for cyclical feature encoding.
+
+    Parameters:
+    - month (pd.Series): A pandas series that contains the months
+
+    Returns:
+    - pd.Series: The cosine of months
+    """
+    return np.cos(month * (2 * np.pi / 12))
+
 
 def compute_features_transactions(df: pl.DataFrame) -> pl.DataFrame:
     """
@@ -135,7 +162,6 @@ def compute_features_transactions(df: pl.DataFrame) -> pl.DataFrame:
         df.with_columns(
             [
                 pl.col("article_id").cast(pl.Utf8).alias("article_id"),
-                pl.from_pandas(pd.to_datetime(df["t_dat"].to_pandas())).alias("t_dat"),
             ]
         )
         .with_columns(
@@ -144,12 +170,6 @@ def compute_features_transactions(df: pl.DataFrame) -> pl.DataFrame:
                 pl.col("t_dat").dt.month().alias("month"),
                 pl.col("t_dat").dt.day().alias("day"),
                 pl.col("t_dat").dt.weekday().alias("day_of_week"),
-            ]
-        )
-        .with_columns(
-            [
-                (pl.col("month") * (2 * np.pi / 12)).sin().alias("month_sin"),
-                (pl.col("month") * (2 * np.pi / 12)).cos().alias("month_cos"),
             ]
         )
         .with_columns([(pl.col("t_dat").cast(pl.Int64) // 1_000_000).alias("t_dat")])
