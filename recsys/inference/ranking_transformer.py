@@ -3,12 +3,17 @@ import logging
 import hopsworks
 import pandas as pd
 
+import nest_asyncio
+nest_asyncio.apply()
 
 class Transformer(object):
     def __init__(self):
         # Connect to Hopsworks
         project = hopsworks.connection().get_project()
         self.fs = project.get_feature_store()
+
+        # Retrieve 'transactions' feature group.
+        self.transactions_fg = self.fs.get_feature_group("transactions", 1)
 
         # Retrieve the 'articles' feature view
         self.articles_fv = self.fs.get_feature_view(
@@ -24,6 +29,8 @@ class Transformer(object):
             name="customers",
             version=1,
         )
+
+        self.customer_fv.init_serving(1)
 
         # Retrieve the 'candidate_embeddings' feature view
         self.candidate_index = self.fs.get_feature_view(
@@ -60,11 +67,7 @@ class Transformer(object):
 
         # Get IDs of items already bought by the customer
         already_bought_items_ids = (
-            self.fs.sql(
-                f"SELECT article_id from transactions_1 WHERE customer_id = '{customer_id}'"
-            )
-            .values.reshape(-1)
-            .tolist()
+            self.transactions_fg.select("article_id").filter(self.transactions_fg.customer_id==customer_id).read(dataframe_type="pandas").values.reshape(-1).tolist()
         )
 
         # Filter candidate items to exclude those already bought by the customer
@@ -99,9 +102,10 @@ class Transformer(object):
 
         # Add customer features
         customer_features = self.customer_fv.get_feature_vector(
-            {"customer_id": customer_id},
-            return_type="pandas",
-        )
+                {"customer_id": customer_id},
+                return_type="pandas",
+            )
+
         ranking_model_inputs["age"] = customer_features.age.values[0]
         ranking_model_inputs["month_sin"] = inputs["month_sin"]
         ranking_model_inputs["month_cos"] = inputs["month_cos"]
@@ -123,11 +127,8 @@ class Transformer(object):
     def postprocess(self, outputs):
         logging.info("✅ Predictions are ready!")
 
-        # Extract predictions from the outputs
-        preds = outputs["predictions"]
-
         # Merge prediction scores and corresponding article IDs into a list of tuples
-        ranking = list(zip(preds["scores"], preds["article_ids"]))
+        ranking = list(zip(outputs["scores"], outputs["article_ids"]))
 
         # Sort the ranking list by score in descending order
         ranking.sort(reverse=True)

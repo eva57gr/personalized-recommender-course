@@ -3,6 +3,9 @@ from datetime import datetime
 import hopsworks
 import numpy as np
 
+import nest_asyncio
+nest_asyncio.apply()
+import logging
 
 class Transformer(object):
     def __init__(self) -> None:
@@ -23,6 +26,7 @@ class Transformer(object):
         # Check if the input data contains a key named "instances"
         # and extract the actual data if present
         inputs = inputs["instances"] if "instances" in inputs else inputs
+        inputs = inputs[0]
 
         # Extract customer_id and transaction_date from the inputs
         customer_id = inputs["customer_id"]
@@ -56,8 +60,6 @@ class Transformer(object):
 
     def postprocess(self, outputs):
         # Return ordered ranking predictions
-        return {
-            "predictions": self.ranking_server.predict(
-                {"instances": outputs["predictions"]}
-            ),
-        }
+        return self.ranking_server.predict(
+                inputs = outputs
+            )
