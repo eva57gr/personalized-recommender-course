@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="images/architecture.png" alt="Architecture">
+    <img src="assets/architecture.png" alt="Architecture">
   </a>
 </p>
 
