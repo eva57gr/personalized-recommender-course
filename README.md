@@ -44,10 +44,10 @@ This is a self-paced course where we provide 5 lessons, which will go over the t
 
 | Lesson | Title | Description | Local Notebooks | Colab Notebooks |
 |--------|-------|-------------|----------------|-----------------|
-| 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower model. | - | - |
-| 2 | The feature pipeline | Learn how to build a scalable feature pipeline (WIP) | [![Binder](https://camo.githubusercontent.com/52feade06f2fecbf006889a904d221e6a730c194/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667)](notebooks/1_fp_computing_features.ipynb) | - |
-| 3 | The training pipeline | Learn how to train and evaluate recommendation models (WIP) | [2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb), [3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
-| 4 | The inference pipeline | Learn how to deploy models for real-time inference (WIP) | [4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb),  [5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb), [6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
+| 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower model. | **No code** | **No code** |
+| 2 | The feature pipeline | Learn how to build a scalable feature pipeline (WIP) | * [1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
+| 3 | The training pipeline | Learn how to train and evaluate recommendation models (WIP) | * [2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb) *  [3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
+| 4 | The inference pipeline | Learn how to deploy models for real-time inference (WIP) | * [4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb) * [5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb) * [6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
 | 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs (WIP) | - | - |
 
 
@@ -76,12 +76,30 @@ To understand how to install and run the code, go to the [INSTALL_AND_USAGE](htt
 > [!Note]
 > Even though you can run everything solely using the INSTALL_AND_USAGE dedicated document, we recommend that you read the articles to understand how the personalized recommender works fully.
 
+## Questions and troubleshooting
+
+Please ask us any questions if anything gets confusing while studying the articles or running the code.
+
+You can `ask any question` by `opening an issue` in this GitHub repository by clicking [here](https://github.com/decodingml/hands-on-personalized-recommender/issues).
+
 ## Sponsors
 
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://rebrand.ly/homepage-github" target="_blank">Hopsworks</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://rebrand.ly/homepage-github" target="_blank">
+        <img src="assets/hopsworks.png" width="150" alt="Hopsworks">
+      </a>
+    </td>
+  </tr>
+</table>
 
 
 ## License
 
 This course is an open-source project released under the Apache-2.0 license. Thus, as long you distribute our LICENSE and acknowledge your project is based on our work, you can safely clone or fork this project and use it as a source of inspiration for your educational projects (e.g., university, college degree, personal projects, etc.).
-
-## Questions and troubleshooting
