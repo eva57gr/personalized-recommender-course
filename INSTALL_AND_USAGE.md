@@ -49,12 +49,12 @@ make all
 ```
 
 This will execute all the ML pipelines in the following order:
-1. Feature Engineering
-2. Retrieval Model Training
-3. Ranking Model Training
-4. Embeddings Creation
-5. Deployment Creation
-6. Schedule Materialization Jobs
+1. Feature engineering
+2. Training the retrieval model 
+3. Training the ranking model
+4. Creating the candidate embeddings
+5. Deploying the inference pipeline
+6. Scheduling the materialization jobs
 
 ### Individual Pipeline Components
 
