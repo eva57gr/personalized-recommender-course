@@ -104,6 +104,44 @@ Open a [GitHub issue](https://github.com/decodingml/hands-on-personalized-recomm
   </tr>
 </table>
 
+## Contributors
+
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/iusztinpaul">
+        <img src="https://github.com/iusztinpaul.png" width="100px;" alt="Paul Iusztin"/><br />
+        <sub><b>Paul Iusztin</b></sub>
+      </a><br />
+      <sub>Project Lead & ML Engineer</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/915-Muscalagiu-AncaIoana">
+        <img src="https://github.com/915-Muscalagiu-AncaIoana.png" width="100px;" alt="Anca Ioana Muscalagiu"/><br />
+        <sub><b>Anca Ioana Muscalagiu</b></sub>
+      </a><br />
+      <sub>AI/ML Engineer</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/paoloap-py">
+        <img src="https://github.com/paoloap-py.png" width="100px;" alt="Paolo Perrone"/><br />
+        <sub><b>Paolo Perrone</b></sub>
+      </a><br />
+      <sub>AI/ML Engineer</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/logicalclocks">
+        <img src="https://github.com/logicalclocks.png" width="100px;" alt="Hopsworks"/><br />
+        <sub><b>Hopsworks</b></sub>
+      </a><br />
+      <sub>AI Lakehouse</sub>
+    </td>
+  </tr>
+</table>
+
 
 ## License
 
