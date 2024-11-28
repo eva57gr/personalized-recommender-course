@@ -25,16 +25,20 @@ This hands-on course teaches you how to build and deploy a real-time personalize
 
 ## 👥 Target Audience
 
-This course is ideal for:
+**This course is ideal for:**
 - ML/AI engineers interested in building production-ready recommender systems
 - Data Engineers, Data Scientists, and Software Engineers wanting to understand the engineering behind recommenders
 
-Prerequisite:
-- **Skills**: Basic knowledge in Python and ML.
-- **Hardware**: Any modern laptop/workstation will get the job done (no GPU required). 
-- **Level of the course**: Intermediate
-
 **Note:** This course focuses on engineering practices and end-to-end system implementation rather than theoretical model optimization or research.
+
+## 🎓 Prerequisites
+
+| Category | Requirements |
+|----------|-------------|
+| **Skills** | Basic knowledge of Python and Machine Learning |
+| **Hardware** | Any modern laptop/workstation will do the job (no GPU or powerful computing power required). |
+| **Level** | Intermediate |
+
 
 ## 💰 Cost Structure
 
