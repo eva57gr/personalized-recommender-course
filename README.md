@@ -1,106 +1,22 @@
-# Dependencies
+<div align="center">
+  <h1>Hands-on H&M Real-Time Personalized Recommender</h1>
+  <p class="tagline">Open source course by <a href="https://decodingml.substack.com">Decoding ML</a> in collaboration with <a href="https://rebrand.ly/homepage-github">Hopsworks</a></p>
+</div>
+</br>
 
-- [Python v3.11](https://www.python.org/downloads/)
-- [uv v0.4.30](https://github.com/astral-sh/uv)
-- [GNU Make 3.81](https://www.gnu.org/software/make/)
+<p align="center">
+  <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
+    <img src="images/architecture.png" alt="Architecture">
+  </a>
+</p>
 
-## Cloud Dependencies
+The **Hands-on H&M Real-Time Personalized Recommender”** is a free course that will teach you how to build and deploy a real-time personalized recommender for H&M fashion articles using the 4-stage recommender architecture, the two-tower model design and the Hopsworks AI Lakehouse. 
 
-- [Hopsworks](https://www.hopsworks.ai/): Create an account an generate an API key. We will stick to their freemium plan.
+## Lessons
 
-# Install
+* [Lesson 1: Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022)
+* Lesson 2: The feature pipeline (WIP)
+* Lesson 3: The training pipeline (WIP)
+* Lesson 4: The inference pipeline (WIP)
+* Lesson 5: Building real-time recommenders with LLMs (WIP)
 
-To set up the project environment:
-
-```bash
-make install
-```
-
-This will:
-- Create a virtual environment using `uv`
-- Activate the virtual environment
-- Install all dependencies including extras from `pyproject.toml`
-
-# Usage
-
-## Pipeline Components
-
-The project consists of several pipeline components that can be run individually or all at once.
-
-### Running the Complete Pipeline
-
-To run all pipeline components in sequence:
-```bash
-make all
-```
-
-This will execute the following steps in order:
-1. Feature Engineering
-2. Retrieval Model Training
-3. Ranking Model Training
-4. Embeddings Creation
-5. Deployment Creation
-6. Schedule Materialization Jobs
-
-### Individual Pipeline Components
-
-You can also run each component separately:
-
-### Individual Pipeline Components
-
-You can also run each component separately:
-
-1. **Feature Engineering**
-   ```bash
-   make feature-engineering
-   ```
-   Executes the feature engineering notebook (`notebooks/1_fp_computing_features.ipynb`)
-
-2. **Train Retrieval Model**
-   ```bash
-   make train-retrieval
-   ```
-   Trains the retrieval model using `notebooks/2_tp_training_retrieval_model.ipynb`
-
-3. **Train Ranking Model**
-   ```bash
-   make train-ranking
-   ```
-   Trains the ranking model using `notebooks/3_tp_training_ranking_model.ipynb`
-
-4. **Create Embeddings**
-   ```bash
-   make create-embeddings
-   ```
-   Generates embeddings using `notebooks/4_fp_computing_item_embeddings.ipynb`
-
-5. **Create Deployments**
-   ```bash
-   make create-deployments
-   ```
-   Sets up model deployments using `notebooks/5_ip_creating_deployments.ipynb`
-
-6. **Schedule Materialization Jobs**
-   ```bash
-   make schedule-materialization-jobs
-   ```
-   Schedules materialization jobs using `notebooks/6_scheduling_materialization_jobs.ipynb`
-
-### Notes
-- All notebooks are executed using IPython through the UV virtual environment
-- Make sure you have UV installed and properly configured before running the pipelines
-- The pipelines should be run in the specified order when executing individually
-
-## Run Streamlit app
-
-To launch the Streamlit application that uses the feature store and fine-tuned models, run:
-
-```bash
-make start-ui
-```
-
-## Clean Hopsworks resources
-
-```bash
-make clean-hopsworks-resources
-```
