@@ -81,7 +81,7 @@ You can also run each component separately:
    ```
 
 4. **Create Embeddings**
-   Execute the embeddings computation Notebook (`notebooks/4_fp_computing_item_embeddings.ipynb`):
+   Execute the embeddings computation Notebook (`notebooks/4_ip_computing_item_embeddings.ipynb`):
    ```bash
    make create-embeddings
    ```

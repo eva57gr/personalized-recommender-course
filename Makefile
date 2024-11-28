@@ -22,7 +22,7 @@ train-ranking:
 	uv run ipython notebooks/3_tp_training_ranking_model.ipynb
 
 create-embeddings:
-	uv run ipython notebooks/4_fp_computing_item_embeddings.ipynb
+	uv run ipython notebooks/4_ip_computing_item_embeddings.ipynb
 
 create-deployments:
 	uv run ipython notebooks/5_ip_creating_deployments.ipynb

@@ -68,7 +68,7 @@ jobs:
       - uses: ./.github/actions/setup
 
       - name: Run pipeline
-        run: uv run ipython notebooks/4_fp_computing_item_embeddings.ipynb
+        run: uv run ipython notebooks/4_ip_computing_item_embeddings.ipynb
         env:
           HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
 
