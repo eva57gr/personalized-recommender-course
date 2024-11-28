@@ -33,9 +33,10 @@ This course is ideal for:
 
 ## Cost Structure
 
+All tools used throughout the course will stick to their free tier, except OpenAI's API, as follows:
+
 - Lessons 1-4: Completely free
 - Lesson 5 (Optional): ~$1-2 for OpenAI API usage when building LLM-enhanced recommenders
-- All tools used throughout the course are free-tier compatible
 
 ## Course format
 
@@ -44,9 +45,9 @@ This is a self-paced course consisting of 5 comprehensive lessons covering theor
 | Lesson | Title | Description | Local Notebooks | Colab Notebooks |
 |--------|-------|-------------|----------------|-----------------|
 | 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower model. | **No code** | **No code** |
-| 2 | The feature pipeline | Learn how to build a scalable feature pipeline (WIP) | • [1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
-| 3 | The training pipeline | Learn how to train and evaluate recommendation models (WIP) | • [2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>• [3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
-| 4 | The inference pipeline | Learn how to deploy models for real-time inference (WIP) | • [4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>• [5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>• [6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
+| 2 | The feature pipeline | Learn how to build a scalable feature pipeline (WIP) | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
+| 3 | The training pipeline | Learn how to train and evaluate recommendation models (WIP) | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
+| 4 | The inference pipeline | Learn how to deploy models for real-time inference (WIP) | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
 | 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs (WIP) | - | - |
 
 > [!NOTE]
