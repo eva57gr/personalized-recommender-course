@@ -1,8 +1,8 @@
-# Installation and Usage Guide
+# 🚀 Installation and Usage Guide
 
 This guide will help you set up and run a machine learning pipeline that includes feature engineering, model training, and deployment using Hopsworks and OpenAI.
 
-# Prerequisites
+# 📋 Prerequisites
 
 ## Local Tools
 You'll need the following tools installed locally:
@@ -18,7 +18,7 @@ The project requires access to these cloud services:
 | [Hopsworks](https://rebrand.ly/serverless-github) | AI Lakehouse for feature store, model registry, and serving | Free tier available | `HOPSWORKS_API_KEY` | [Create API Key](https://docs.hopsworks.ai/latest/user_guides/projects/api_key/create_api_key/) |
 | [OpenAI API](https://openai.com/index/openai-api/) | LLM API for recommender system | Pay-per-use | `OPENAI_API_KEY`<br>`OPENAI_MODEL_ID` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) |
 
-# Getting Started
+# 🎯 Getting Started
 
 ## 1. Installation
 
@@ -41,7 +41,7 @@ Before running any components:
    ```
 2. Open `.env` and configure the required credentials following the inline comments.
 
-# Running the Pipeline
+# ⚡️ Running the Pipeline
 
 You can run the entire pipeline at once or execute individual components.
 
@@ -100,12 +100,12 @@ Each component can be run separately:
    ```
    View results in [Hopsworks](https://rebrand.ly/serverless-github): **Compute → Ingestions**
 
-## Important Notes
+## 🚨 Important Notes
 - All notebooks are executed using IPython through the UV virtual environment
 - Components should be run in the specified order when executing individually
 - Ensure UV is properly installed and configured before running any commands
 
-# Additional Operations
+# 🛠️ Additional Operations
 
 ## Launch Frontend Application
 Start the Streamlit UI that interfaces with [Hopsworks](https://rebrand.ly/serverless-github):
