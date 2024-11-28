@@ -2,6 +2,7 @@
   <h1>Hands-on H&M Real-Time Personalized Recommender</h1>
   <p class="tagline">Open source course by <a href="https://decodingml.substack.com">Decoding ML</a> in collaboration with <a href="https://rebrand.ly/homepage-github">Hopsworks</a></p>
 </div>
+
 </br>
 
 <p align="center">
@@ -10,45 +11,46 @@
   </a>
 </p>
 
-## What will you learn?
+## About This Course
 
-The goal of this course is to teach you how to build and deploy a real-time personalized recommender for H&M fashion articles, going through:
+This hands-on course teaches you how to build and deploy a real-time personalized recommender system for H&M fashion articles. You'll learn:
 
-- 4-stage recommender architecture
-- Two-tower model training
-- Scalable ML system design
+- A practical 4-stage recommender architecture
+- Two-tower model implementation and training
+- Scalable ML system design principles
 - MLOps best practices
-- Real-time deployment
+- Real-time model deployment
 - LLM-enhanced recommendations
-- Interactive web interface
+- Building an interactive web interface
 
-## Who is this for?
+## Target Audience
 
-ML/AI engineers looking to understand how to design, build and deploy real-time personalized recommenders. Also, it is a good fit for DE/DS/SWE who want to understand the engineering behind a recommender.
+This course is ideal for:
+- ML/AI engineers interested in building production-ready recommender systems
+- Data Engineers, Data Scientists, and Software Engineers wanting to understand the engineering behind recommenders
 
-This is NOT a course for data scientists or researchers showing how to train the most accurate models. This course will focus mostly on engineering and end-to-end system using MLOps best practices.
+**Note:** This course focuses on engineering practices and end-to-end system implementation rather than theoretical model optimization or research.
 
-## Costs?
+## Cost Structure
 
-The lessons are completely free. Also, we will stick to the free version of all the tools used throughout the course.
+- Lessons 1-4: Completely free
+- Lesson 5 (Optional): ~$1-2 for OpenAI API usage when building LLM-enhanced recommenders
+- All tools used throughout the course are free-tier compatible
 
-The only thing that will cost you ~$1-2 is running the latest lesson on building recommenders with LLMs where we will use the OpenAI API. 
+## Course format
 
-To conclude, Lesson 1,2,3, and 4 are free and Lesson 5 will cost you ~$1-2, which you can choose not to run.
-
-## How will you learn?
-
-This is a self-paced course where we provide 5 lessons, which will go over the theory, system design and implementation of building a real-time personalized recommender. Everything is backed by the open-source code found in this repository.
-
-## Lessons
+This is a self-paced course consisting of 5 comprehensive lessons covering theory, system design, and practical implementation. All concepts are supported by open-source code in this repository.
 
 | Lesson | Title | Description | Local Notebooks | Colab Notebooks |
 |--------|-------|-------------|----------------|-----------------|
 | 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower model. | **No code** | **No code** |
-| 2 | The feature pipeline | Learn how to build a scalable feature pipeline (WIP) | * [1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
-| 3 | The training pipeline | Learn how to train and evaluate recommendation models (WIP) | * [2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb) *  [3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
-| 4 | The inference pipeline | Learn how to deploy models for real-time inference (WIP) | * [4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb) * [5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb) * [6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
+| 2 | The feature pipeline | Learn how to build a scalable feature pipeline (WIP) | • [1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
+| 3 | The training pipeline | Learn how to train and evaluate recommendation models (WIP) | • [2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>• [3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
+| 4 | The inference pipeline | Learn how to deploy models for real-time inference (WIP) | • [4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>• [5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>• [6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
 | 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs (WIP) | - | - |
+
+> [!NOTE]
+> Check the [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) doc for a step-by-step installation and usage guide.
 
 
 ## Project structure
@@ -69,18 +71,20 @@ At Decoding ML we teach how to build production ML systems, thus the course foll
 ├── pyproject.toml      # Project dependencies
 ```
 
-## Install and usage
+## Getting Started
 
-To understand how to install and run the code, go to the [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) dedicated document.
+For detailed installation and usage instructions, see our [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) guide.
 
-> [!Note]
-> Even though you can run everything solely using the INSTALL_AND_USAGE dedicated document, we recommend that you read the articles to understand how the personalized recommender works fully.
+**Recommendation:** While you can follow the installation guide directly, we strongly recommend reading the accompanying articles to gain a complete understanding of the recommender system.
 
 ## Questions and troubleshooting
 
-Please ask us any questions if anything gets confusing while studying the articles or running the code.
+Have questions or running into issues? We're here to help!
 
-You can `ask any question` by `opening an issue` in this GitHub repository by clicking [here](https://github.com/decodingml/hands-on-personalized-recommender/issues).
+Open a [GitHub issue](https://github.com/decodingml/hands-on-personalized-recommender/issues) for:
+- Questions about the course material
+- Technical troubleshooting
+- Clarification on concepts
 
 ## Sponsors
 
@@ -93,7 +97,7 @@ You can `ask any question` by `opening an issue` in this GitHub repository by cl
   <tr>
     <td align="center">
       <a href="https://rebrand.ly/homepage-github" target="_blank">
-        <img src="assets/hopsworks.png" width="150" alt="Hopsworks">
+        <img src="assets/hopsworks.png" width="200" alt="Hopsworks">
       </a>
     </td>
   </tr>
