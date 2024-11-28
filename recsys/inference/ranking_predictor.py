@@ -8,7 +8,7 @@ import logging
 class Predict(object):
     
     def __init__(self):
-        self.model = joblib.load(os.environ["ARTIFACT_FILES_PATH"] + "/ranking_model.pkl")
+        self.model = joblib.load(os.environ["MODEL_FILES_PATH"] + "/ranking_model.pkl")
 
     def predict(self, inputs):
         
