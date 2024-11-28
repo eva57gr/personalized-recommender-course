@@ -11,7 +11,7 @@
   </a>
 </p>
 
-## About This Course
+## 🎯 About This Course
 
 This hands-on course teaches you how to build and deploy a real-time personalized recommender system for H&M fashion articles. You'll learn:
 
@@ -23,7 +23,7 @@ This hands-on course teaches you how to build and deploy a real-time personalize
 - LLM-enhanced recommendations
 - Building an interactive web interface
 
-## Target Audience
+## 👥 Target Audience
 
 This course is ideal for:
 - ML/AI engineers interested in building production-ready recommender systems
@@ -31,14 +31,14 @@ This course is ideal for:
 
 **Note:** This course focuses on engineering practices and end-to-end system implementation rather than theoretical model optimization or research.
 
-## Cost Structure
+## 💰 Cost Structure
 
 All tools used throughout the course will stick to their free tier, except OpenAI's API, as follows:
 
 - Lessons 1-4: Completely free
 - Lesson 5 (Optional): ~$1-2 for OpenAI API usage when building LLM-enhanced recommenders
 
-## Course format
+## 📚 Course format
 
 This is a self-paced course consisting of 5 comprehensive lessons covering theory, system design, and practical implementation. All concepts are supported by open-source code in this repository.
 
@@ -46,15 +46,15 @@ This is a self-paced course consisting of 5 comprehensive lessons covering theor
 |--------|-------|-------------|----------------|-----------------|
 | 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower model. | **No code** | **No code** |
 | 2 | The feature pipeline | Learn how to build a scalable feature pipeline (WIP) | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
-| 3 | The training pipeline | Learn how to train and evaluate recommendation models (WIP) | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
-| 4 | The inference pipeline | Learn how to deploy models for real-time inference (WIP) | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
+| 3 | The training pipelines | Learn how to train and evaluate recommendation models (WIP) | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
+| 4 | The inference pipelines | Learn how to deploy models for real-time inference (WIP) | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
 | 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs (WIP) | - | - |
 
 > [!NOTE]
 > Check the [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) doc for a step-by-step installation and usage guide.
 
 
-## Project structure
+## 🏗️ Project structure
 
 At Decoding ML we teach how to build production ML systems, thus the course follows the structure of a real-world Python project:
 
@@ -72,13 +72,13 @@ At Decoding ML we teach how to build production ML systems, thus the course foll
 ├── pyproject.toml      # Project dependencies
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
 For detailed installation and usage instructions, see our [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) guide.
 
 **Recommendation:** While you can follow the installation guide directly, we strongly recommend reading the accompanying articles to gain a complete understanding of the recommender system.
 
-## Questions and troubleshooting
+## 💡 Questions and troubleshooting
 
 Have questions or running into issues? We're here to help!
 

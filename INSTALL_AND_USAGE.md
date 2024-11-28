@@ -1,122 +1,120 @@
-# Dependencies
+# Installation and Usage Guide
 
+This guide will help you set up and run a machine learning pipeline that includes feature engineering, model training, and deployment using Hopsworks and OpenAI.
+
+# Prerequisites
+
+## Local Tools
+You'll need the following tools installed locally:
 - [Python v3.11](https://www.python.org/downloads/)
-- [uv v0.4.30](https://github.com/astral-sh/uv)
-- [GNU Make 3.81](https://www.gnu.org/software/make/)
+- [uv v0.4.30](https://github.com/astral-sh/uv) - Python package installer and virtual environment manager
+- [GNU Make 3.81](https://www.gnu.org/software/make/) - Build automation tool
 
-## Cloud Dependencies
+## Cloud Services
+The project requires access to these cloud services:
 
-| Cloud dependency | Tool type | Description | Costs | Env Vars |
-|-----------------|-----------|-------------|--------|-----------|
-| [Hopsworks](https://rebrand.ly/serverless-github) | AI Lakehouse | Serverless AI Lakehouse used for its feature store, model registry and model serving | Free tier available: 0 costs to run the course | `HOPSWORKS_API_KEY` |
-| [OpenAI API](https://openai.com/index/openai-api/) | LLM API | API access to OpenAI's language models used to build the LLM recommender | Pay-per-use | `OPENAI_API_KEY`, `OPENAI_MODEL_ID` |
+| Service | Purpose | Cost | Required Credentials | Setup Guide |
+|---------|---------|------|---------------------|-------------|
+| [Hopsworks](https://rebrand.ly/serverless-github) | AI Lakehouse for feature store, model registry, and serving | Free tier available | `HOPSWORKS_API_KEY` | [Create API Key](https://docs.hopsworks.ai/latest/user_guides/projects/api_key/create_api_key/) |
+| [OpenAI API](https://openai.com/index/openai-api/) | LLM API for recommender system | Pay-per-use | `OPENAI_API_KEY`<br>`OPENAI_MODEL_ID` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) |
 
-# Install
+# Getting Started
 
-To set up the project environment:
+## 1. Installation
 
+Set up the project environment by running:
 ```bash
 make install
 ```
 
-This will:
+This command will:
 - Create a virtual environment using `uv`
 - Activate the virtual environment
 - Install all dependencies from `pyproject.toml`
 
-# Usage
+## 2. Environment Configuration
 
-## Set environment variables
+Before running any components:
+1. Create your environment file:
+   ```bash
+   cp .env.example .env
+   ```
+2. Open `.env` and configure the required credentials following the inline comments.
 
-The first step before running anything is to set up the environment variables required to access Hopsworks and OpenAI's API.
+# Running the Pipeline
 
-Go to the root of the repository and run:
-```bash
-cp .env.example .env
-```
+You can run the entire pipeline at once or execute individual components.
 
-Open your `.env` file and fill it as explain in the comments.
+## Running the Complete Pipeline
 
-## Pipeline components
-
-The project consists of several pipeline components that can be run individually or all at once.
-
-### Running all the pipelines at once
-
-To run all the pipeline at once in a sequence, run:
+Execute all components in sequence:
 ```bash
 make all
 ```
 
-This will execute all the ML pipelines in the following order:
+This runs the following steps:
 1. Feature engineering
-2. Training the retrieval model 
-3. Training the ranking model
-4. Creating the candidate embeddings
-5. Deploying the inference pipeline
-6. Scheduling the materialization jobs
+2. Retrieval model training
+3. Ranking model training
+4. Candidate embeddings creation
+5. Inference pipeline deployment
+6. Materialization job scheduling
 
-### Individual Pipeline Components
+## Running Individual Components
 
-You can also run each component separately:
-
-### Individual Pipeline Components
+Each component can be run separately:
 
 1. **Feature Engineering**
-   Execute the feature engineering Notebook (`notebooks/1_fp_computing_features.ipynb`):
    ```bash
    make feature-engineering
    ```
+   View results in [Hopsworks](https://rebrand.ly/serverless-github): **Feature Store → Feature Groups**
 
-   Go to Hopsworks
-
-2. **Train Retrieval Model**
-   Execute the retrieval model training Notebook (`notebooks/2_tp_training_retrieval_model.ipynb`):
+2. **Retrieval Model Training**
    ```bash
    make train-retrieval
    ```
+   View results in [Hopsworks](https://rebrand.ly/serverless-github): **Data Science → Model Registry**
 
-3. **Train Ranking Model**
-   Execute the ranking model training Notebook (`notebooks/3_tp_training_ranking_model.ipynb`):
+3. **Ranking Model Training**
    ```bash
    make train-ranking
    ```
+   View results in [Hopsworks](https://rebrand.ly/serverless-github): **Data Science → Model Registry**
 
-4. **Create Embeddings**
-   Execute the embeddings computation Notebook (`notebooks/4_ip_computing_item_embeddings.ipynb`):
+4. **Embeddings Creation**
    ```bash
    make create-embeddings
    ```
+   View results in [Hopsworks](https://rebrand.ly/serverless-github): **Feature Store → Feature Groups**
 
-5. **Create Deployments**
-   Execute the deployments creation Notebook (`notebooks/5_ip_creating_deployments.ipynb`):
+5. **Deployment Creation**
    ```bash
    make create-deployments
    ```
+   View results in [Hopsworks](https://rebrand.ly/serverless-github): **Data Science → Deployments**
 
-6. **Schedule Materialization Jobs**
-   Execute the materialization jobs scheduling Notebook (`notebooks/6_scheduling_materialization_jobs.ipynb`):
+6. **Materialization Job Scheduling**
    ```bash
    make schedule-materialization-jobs
    ```
+   View results in [Hopsworks](https://rebrand.ly/serverless-github): **Compute → Ingestions**
 
-### Notes
+## Important Notes
 - All notebooks are executed using IPython through the UV virtual environment
-- Make sure you have UV installed and properly configured before running the pipelines
-- The pipelines should be run in the specified order when executing individually
+- Components should be run in the specified order when executing individually
+- Ensure UV is properly installed and configured before running any commands
 
-## Run Streamlit app
+# Additional Operations
 
-To launch the Streamlit frontend application that uses the feature store and fine-tuned models, run:
-
+## Launch Frontend Application
+Start the Streamlit UI that interfaces with [Hopsworks](https://rebrand.ly/serverless-github):
 ```bash
 make start-ui
 ```
 
-## Clean Hopsworks resources
-
-To clean all 
-
+## Clean Up Resources
+Remove all created resources from [Hopsworks](https://rebrand.ly/serverless-github):
 ```bash
 make clean-hopsworks-resources
 ```
