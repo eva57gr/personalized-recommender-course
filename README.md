@@ -114,7 +114,7 @@ Open a [GitHub issue](https://github.com/decodingml/hands-on-personalized-recomm
         <img src="https://github.com/iusztinpaul.png" width="100px;" alt="Paul Iusztin"/><br />
         <sub><b>Paul Iusztin</b></sub>
       </a><br />
-      <sub>Project Lead & ML Engineer</sub>
+      <sub>AI/ML Engineer</sub>
     </td>
     <td align="center">
       <a href="https://github.com/915-Muscalagiu-AncaIoana">
@@ -123,9 +123,7 @@ Open a [GitHub issue](https://github.com/decodingml/hands-on-personalized-recomm
       </a><br />
       <sub>AI/ML Engineer</sub>
     </td>
-  </tr>
-  <tr>
-    <td align="center">
+     <td align="center">
       <a href="https://github.com/paoloap-py">
         <img src="https://github.com/paoloap-py.png" width="100px;" alt="Paolo Perrone"/><br />
         <sub><b>Paolo Perrone</b></sub>
