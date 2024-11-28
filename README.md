@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Hands-on H&M Real-Time Personalized Recommender</h1>
-  <p class="tagline">Open source course by <a href="https://decodingml.substack.com">Decoding ML</a> in collaboration with <a href="https://rebrand.ly/homepage-github">Hopsworks</a></p>
+  <p class="tagline">Open-source course by <a href="https://decodingml.substack.com">Decoding ML</a> in collaboration with <a href="https://rebrand.ly/homepage-github">Hopsworks</a>.</p>
 </div>
 
 </br>
