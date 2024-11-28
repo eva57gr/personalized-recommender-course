@@ -68,6 +68,8 @@ You can also run each component separately:
    make feature-engineering
    ```
 
+   Go to Hopsworks
+
 2. **Train Retrieval Model**
    Execute the retrieval model training Notebook (`notebooks/2_tp_training_retrieval_model.ipynb`):
    ```bash

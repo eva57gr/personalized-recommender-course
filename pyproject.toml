@@ -13,6 +13,7 @@ dependencies = [
     "langchain-openai==0.1.14",
     "langchain==0.2.6",
     "loguru>=0.7.2",
+    "nbformat>=5.10.4",
     "polars==1.9.0",
     "pydantic-settings>=2.6.1",
     "sentence-transformers==2.2.2",
