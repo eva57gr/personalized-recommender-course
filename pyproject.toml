@@ -7,7 +7,7 @@ requires-python = "~=3.11"
 dependencies = [
     "altair>=4.2.2",
     "catboost==1.2",
-    "hopsworks[python]>=4.1.0rc0",
+    "hopsworks[python]>=4.1.0",
     "huggingface-hub==0.24.7",
     "langchain-openai==0.1.14",
     "langchain==0.2.6",
