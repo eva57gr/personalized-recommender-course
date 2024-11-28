@@ -26,18 +26,29 @@ This will:
 
 # Usage
 
-## Pipeline Components
+## Set environment variables
+
+The first step before running anything is to set up the environment variables required to access Hopsworks and OpenAI's API.
+
+Go to the root of the repository and run:
+```bash
+cp .env.example .env
+```
+
+Open your `.env` file and fill it as explain in the comments.
+
+## Pipeline components
 
 The project consists of several pipeline components that can be run individually or all at once.
 
-### Running the Complete Pipeline
+### Running all the pipelines at once
 
-To run all pipeline components in sequence:
+To run all the pipeline at once in a sequence, run:
 ```bash
 make all
 ```
 
-This will execute the following steps in order:
+This will execute all the ML pipelines in the following order:
 1. Feature Engineering
 2. Retrieval Model Training
 3. Ranking Model Training
@@ -51,43 +62,41 @@ You can also run each component separately:
 
 ### Individual Pipeline Components
 
-You can also run each component separately:
-
 1. **Feature Engineering**
+   Execute the feature engineering Notebook (`notebooks/1_fp_computing_features.ipynb`):
    ```bash
    make feature-engineering
    ```
-   Executes the feature engineering notebook (`notebooks/1_fp_computing_features.ipynb`)
 
 2. **Train Retrieval Model**
+   Execute the retrieval model training Notebook (`notebooks/2_tp_training_retrieval_model.ipynb`):
    ```bash
    make train-retrieval
    ```
-   Trains the retrieval model using `notebooks/2_tp_training_retrieval_model.ipynb`
 
 3. **Train Ranking Model**
+   Execute the ranking model training Notebook (`notebooks/3_tp_training_ranking_model.ipynb`):
    ```bash
    make train-ranking
    ```
-   Trains the ranking model using `notebooks/3_tp_training_ranking_model.ipynb`
 
 4. **Create Embeddings**
+   Execute the embeddings computation Notebook (`notebooks/4_fp_computing_item_embeddings.ipynb`):
    ```bash
    make create-embeddings
    ```
-   Generates embeddings using `notebooks/4_fp_computing_item_embeddings.ipynb`
 
 5. **Create Deployments**
+   Execute the deployments creation Notebook (`notebooks/5_ip_creating_deployments.ipynb`):
    ```bash
    make create-deployments
    ```
-   Sets up model deployments using `notebooks/5_ip_creating_deployments.ipynb`
 
 6. **Schedule Materialization Jobs**
+   Execute the materialization jobs scheduling Notebook (`notebooks/6_scheduling_materialization_jobs.ipynb`):
    ```bash
    make schedule-materialization-jobs
    ```
-   Schedules materialization jobs using `notebooks/6_scheduling_materialization_jobs.ipynb`
 
 ### Notes
 - All notebooks are executed using IPython through the UV virtual environment
@@ -96,13 +105,15 @@ You can also run each component separately:
 
 ## Run Streamlit app
 
-To launch the Streamlit application that uses the feature store and fine-tuned models, run:
+To launch the Streamlit frontend application that uses the feature store and fine-tuned models, run:
 
 ```bash
 make start-ui
 ```
 
 ## Clean Hopsworks resources
+
+To clean all 
 
 ```bash
 make clean-hopsworks-resources
