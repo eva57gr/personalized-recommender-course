@@ -98,6 +98,12 @@ For detailed installation and usage instructions, see our [INSTALL_AND_USAGE](ht
 
 **Recommendation:** While you can follow the installation guide directly, we strongly recommend reading the accompanying articles to gain a complete understanding of the recommender system.
 
+<p align="center">
+  <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
+    <img src="assets/ui_example.png" alt="UI Example" width="600">
+  </a>
+</p>
+
 ## 💡 Questions and Troubleshooting
 
 Have questions or running into issues? We're here to help!
