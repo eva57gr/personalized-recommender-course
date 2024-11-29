@@ -94,14 +94,11 @@ def customer_recommendations(
             st.session_state.last_customer_id = customer_id
 
             # Get predictions from model
-            deployment_input = {
-                "instances": {
-                    "customer_id": customer_id,
-                    "transaction_date": formatted_timestamp,
-                }
-            }
+            deployment_input = [
+                {"customer_id": customer_id, "transaction_date": formatted_timestamp}
+            ]
 
-            prediction = query_model_deployment.predict(deployment_input)[
+            prediction = query_model_deployment.predict(inputs=deployment_input)[
                 "predictions"
             ]["ranking"]
 
@@ -439,5 +436,5 @@ def llm_recommendations(articles_fv, api_key, customer_id):
 def get_similar_items(description, embedding_model, articles_fv):
     """Get similar items based on description embedding"""
     description_embedding = embedding_model.encode(description)
-    
+
     return articles_fv.find_neighbors(description_embedding, k=25)
