@@ -164,7 +164,7 @@ gh secret set OPENAI_API_KEY
 
 <p align="center">
   <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/github_actions_secrets.png" alt="GA Secrets" width="600">
+    <img src="assets/github_actions_secrets.png" alt="GA Secrets" width="800">
   </a>
 </p>
 
@@ -179,7 +179,7 @@ gh secret set OPENAI_API_KEY
 
 <p align="center">
   <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/github_actions_manual_trigger.png" alt="GA Manual Trigger" width="600">
+    <img src="assets/github_actions_manual_trigger.png" alt="GA Manual Trigger" width="800">
   </a>
 </p>
 
@@ -187,7 +187,7 @@ After triggering the pipeline, you will see it running, signaled by a yellow cir
 
 <p align="center">
   <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/github_actions_pipeline_progress.png" alt="GA Progress" width="600">
+    <img src="assets/github_actions_pipeline_progress.png" alt="GA Progress" width="800">
   </a>
 </p>
 
@@ -195,7 +195,7 @@ After it is finished, it should look like this:
 
 <p align="center">
   <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/github_actions_pipeline_done.png" alt="GA Done" width="600">
+    <img src="assets/github_actions_pipeline_done.png" alt="GA Done" width="800">
   </a>
 </p>
 
@@ -225,7 +225,7 @@ on:
 
 2. **Output Verification**
    - Access results in [Hopsworks Serverless](https://rebrand.ly/serverless-github)
-   - Check Feature Groups, Models, and Deployments
+   - Check Feature Groups, Feature Views, Model Registry, and Deployments
 
 ## ⚠️ Important Notes
 - Full pipeline execution takes approximately 1.5 hours
