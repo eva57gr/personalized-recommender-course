@@ -153,6 +153,12 @@ Set up required environment variables as GitHub Actions secrets:
 
 [📚 Set up GitHub Actions Secrets Guide](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions?tool=webui)
 
+<p align="center">
+  <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
+    <img src="assets/github_actions_secrets.png" alt="GA Secrets" width="800">
+  </a>
+</p>
+
 **Option B: Using GitHub CLI**
 
 If you have `GitHub CLI` installed, instead of settings the GitHub Actions secrets manually, you can set them by running the following:
@@ -161,13 +167,6 @@ If you have `GitHub CLI` installed, instead of settings the GitHub Actions secre
 gh secret set HOPSWORKS_API_KEY
 gh secret set OPENAI_API_KEY
 ```
-
-<p align="center">
-  <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/github_actions_secrets.png" alt="GA Secrets" width="800">
-  </a>
-</p>
-
 
 ### 3. Execute Pipeline
 
@@ -179,7 +178,7 @@ gh secret set OPENAI_API_KEY
 
 <p align="center">
   <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/github_actions_manual_trigger.png" alt="GA Manual Trigger" width="800">
+    <img src="assets/github_actions_manual_trigger.png" alt="GA Manual Trigger" width="900">
   </a>
 </p>
 
@@ -187,7 +186,7 @@ After triggering the pipeline, you will see it running, signaled by a yellow cir
 
 <p align="center">
   <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/github_actions_pipeline_progress.png" alt="GA Progress" width="800">
+    <img src="assets/github_actions_pipeline_progress.png" alt="GA Progress" width="900">
   </a>
 </p>
 
@@ -195,7 +194,7 @@ After it is finished, it should look like this:
 
 <p align="center">
   <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/github_actions_pipeline_done.png" alt="GA Done" width="800">
+    <img src="assets/github_actions_pipeline_done.png" alt="GA Done" width="900">
   </a>
 </p>
 
