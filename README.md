@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/architecture.png" alt="Architecture" width="600">
+    <img src="assets/system_architecture.png" alt="Architecture" width="600">
   </a>
 </p>
 
@@ -22,6 +22,12 @@ This hands-on course teaches you how to build and deploy a real-time personalize
 - Real-time model deployment
 - LLM-enhanced recommendations
 - Building an interactive web interface
+
+<p align="center">
+  <img src="assets/4_stage_recommender_architecture.png" alt="Retrieval Model" width="400" style="display: inline-block; margin-right: 20px;">
+  <img src="assets/two_tower_embedding_model.png" alt="Ranking Model" width="400" style="display: inline-block;">
+</p>
+
 
 ## 👥 Target Audience
 

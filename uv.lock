@@ -939,7 +939,7 @@ dev = [
 requires-dist = [
     { name = "altair", specifier = ">=4.2.2" },
     { name = "catboost", specifier = "==1.2" },
-    { name = "hopsworks", extras = ["python"], specifier = ">=4.1.0" },
+    { name = "hopsworks", extras = ["python"], specifier = ">=4.1.2" },
     { name = "huggingface-hub", specifier = "==0.24.7" },
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "langchain", specifier = "==0.2.6" },
@@ -959,7 +959,7 @@ dev = [{ name = "ruff", specifier = ">=0.7.2" }]
 
 [[package]]
 name = "hopsworks"
-version = "4.1"
+version = "4.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "avro" },
@@ -981,9 +981,9 @@ dependencies = [
     { name = "tqdm" },
     { name = "tzlocal" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/40/42/776342857a22b5870e5a032b08a1cb28988ed5afe1a81619fc2d2338b243/hopsworks-4.1.0.tar.gz", hash = "sha256:95aee389eba4eac4aabeb77d88f037ecd71cde4e7a3b5764dec2540aff27b117", size = 468428 }
+sdist = { url = "https://files.pythonhosted.org/packages/31/d4/344bd849739db2dfb53cd39c67d9d5d08a82c44ab3efe72708cad01751b6/hopsworks-4.1.2.tar.gz", hash = "sha256:298a1cadef9841ae2bbfdde751887c04f041ff054d9140f8fadcc2b96ce113d4", size = 469125 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ab/b5/280f5dd67e5304167dd90ad79fd572c0468e53a47a6c108abdfc763a5c69/hopsworks-4.1.0-py3-none-any.whl", hash = "sha256:7868fde1de186d1b341edf4e842b4639fa36c151f537cb33923d3b8160b37124", size = 639024 },
+    { url = "https://files.pythonhosted.org/packages/08/9e/a8a0baefe577e3a406dacf107f8cc8a6bbcc0744eeb0dfd6d6aad3edaf81/hopsworks-4.1.2-py3-none-any.whl", hash = "sha256:e021e788635dee4c4f48c095efd8b008fd061cff519a4d1e0b6b01d390ec9e56", size = 639746 },
 ]
 
 [package.optional-dependencies]
