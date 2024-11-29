@@ -24,8 +24,8 @@ This hands-on course teaches you how to build and deploy a real-time personalize
 - Building an interactive web interface
 
 <p align="center">
-  <img src="assets/4_stage_recommender_architecture.png" alt="Retrieval Model" width="400" style="display: inline-block; margin-right: 20px;">
-  <img src="assets/two_tower_embedding_model.png" alt="Ranking Model" width="400" style="display: inline-block;">
+  <img src="assets/4_stage_recommender_architecture.png" alt="4_stage_recommender_architecture" width="450" style="display: inline-block; margin-right: 20px;">
+  <img src="assets/two_tower_embedding_model.png" alt="two_tower_embedding_model" width="450" style="display: inline-block;">
 </p>
 
 
