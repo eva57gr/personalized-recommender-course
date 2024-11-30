@@ -88,7 +88,7 @@ At Decoding ML we teach how to build production ML systems, thus the course foll
 ├── tools/              # Utility scripts
 ├── tests/              # Unit and integration tests
 ├── .env.example        # Example environment variables template
-├── Makefile            # Build automation
+├── Makefile            # Commands to install and run the project
 ├── pyproject.toml      # Project dependencies
 ```
 
