@@ -124,6 +124,9 @@ make clean-hopsworks-resources
 
 This project supports running ML pipelines automatically through GitHub Actions, providing an alternative to local or Colab execution.
 
+> [!NOTE]
+> This is handy when getting network errors, such as timeouts, on your local machine. GitHub Actions has an enterprise-level network that will run your ML pipelines smoothly.
+
 ## Pipeline Triggers
 
 The ML pipelines can be triggered in three ways:
