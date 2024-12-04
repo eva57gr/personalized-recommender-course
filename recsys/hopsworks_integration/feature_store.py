@@ -34,7 +34,7 @@ def create_customers_feature_group(fs, df: pd.DataFrame, online_enabled: bool = 
         primary_key=["customer_id"],
         online_enabled=online_enabled,
     )
-    customers_fg.insert(df, write_options={"wait_for_job": True})
+    customers_fg.insert(df, wait=True)
 
     for desc in constants.customer_feature_descriptions:
         customers_fg.update_feature_description(desc["name"], desc["description"])
@@ -61,7 +61,7 @@ def create_articles_feature_group(
         features=constants.article_feature_description,
         embedding_index=emb,
     )
-    articles_fg.insert(df, write_options={"wait_for_job": True})
+    articles_fg.insert(df, wait=True)
 
     return articles_fg
 
@@ -78,7 +78,7 @@ def create_transactions_feature_group(
         transformation_functions=[month_sin, month_cos],
         event_time="t_dat",
     )
-    trans_fg.insert(df, write_options={"wait_for_job": True})
+    trans_fg.insert(df, wait=True)
 
     for desc in constants.transactions_feature_descriptions:
         trans_fg.update_feature_description(desc["name"], desc["description"])
@@ -100,7 +100,7 @@ def create_interactions_feature_group(
 
     interactions_fg.insert(
         df,
-        write_options={"wait_for_job": True},
+        wait=True,
     )
 
     for desc in constants.interactions_feature_descriptions:
@@ -120,7 +120,7 @@ def create_ranking_feature_group(
         parents=parents,
         online_enabled=online_enabled,
     )
-    rank_fg.insert(df, write_options={"wait_for_job": True})
+    rank_fg.insert(df, wait=True)
 
     for desc in constants.ranking_feature_descriptions:
         rank_fg.update_feature_description(desc["name"], desc["description"])
@@ -146,7 +146,7 @@ def create_candidate_embeddings_feature_group(
         description="Embeddings for each article.",
         online_enabled=online_enabled,
     )
-    candidate_embeddings_fg.insert(df, write_options={"wait_for_job": True})
+    candidate_embeddings_fg.insert(df, wait=True)
 
     return candidate_embeddings_fg
 

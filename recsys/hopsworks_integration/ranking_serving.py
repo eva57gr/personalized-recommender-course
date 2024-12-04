@@ -1,8 +1,6 @@
 import os
 
 import joblib
-from hsml.model_schema import ModelSchema
-from hsml.schema import Schema
 from hsml.transformer import Transformer
 
 from recsys.config import settings
@@ -19,20 +17,17 @@ class HopsworksRankingModel:
 
         return output_path
 
-    def register(self, mr, X_train, y_train, metrics):
+    def register(self, mr, feature_view, X_train, metrics):
         local_model_path = self.save_to_local()
 
         input_example = X_train.sample().to_dict("records")
-        input_schema = Schema(X_train)
-        output_schema = Schema(y_train)
-        model_schema = ModelSchema(input_schema, output_schema)
 
         ranking_model = mr.python.create_model(
             name="ranking_model",
-            metrics=metrics,
-            model_schema=model_schema,
-            input_example=input_example,
             description="Ranking model that scores item candidates",
+            metrics=metrics,
+            input_example=input_example,
+            feature_view=feature_view,
         )
         ranking_model.save(local_model_path)
 

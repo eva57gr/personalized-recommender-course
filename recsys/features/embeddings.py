@@ -2,11 +2,7 @@ import pandas as pd
 import tensorflow as tf
 
 
-def preprocess(train_df: pd.DataFrame, model_schema) -> pd.DataFrame:
-    # Get the list of input features for the candidate model from the model schema
-    input_model_schema = model_schema["input_schema"]["columnar_schema"]
-    candidate_features = [feat["name"] for feat in input_model_schema]
-
+def preprocess(train_df: pd.DataFrame, candidate_features: list) -> pd.DataFrame:
     # Select the candidate features from the training DataFrame
     item_df = train_df[candidate_features]
 

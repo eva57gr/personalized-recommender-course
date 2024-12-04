@@ -9,7 +9,7 @@ nest_asyncio.apply()
 class Transformer(object):
     def __init__(self):
         # Connect to Hopsworks
-        project = hopsworks.connection().get_project()
+        project = hopsworks.login()
         self.fs = project.get_feature_store()
 
         # Retrieve 'transactions' feature group.
@@ -45,11 +45,16 @@ class Transformer(object):
             version=1,
         )
 
-        # Extract input schema from the model
-        input_schema = model.model_schema["input_schema"]["columnar_schema"]
+        self.ranking_fv = model.get_feature_view(init=False)
+        self.ranking_fv.init_batch_scoring(1)
 
         # Get the names of features expected by the ranking model
-        self.ranking_model_feature_names = [feat["name"] for feat in input_schema]
+        self.ranking_model_feature_names = [
+            feature.name 
+            for feature 
+            in self.ranking_fv.schema 
+            if feature.name != 'label'
+        ]
 
     def preprocess(self, inputs):
         # Extract the input instance

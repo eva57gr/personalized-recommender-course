@@ -10,7 +10,7 @@ import pandas as pd
 class Transformer(object):
     def __init__(self) -> None:
         # Connect to the Hopsworks
-        project = hopsworks.connection().get_project()
+        project = hopsworks.login()
         ms = project.get_model_serving()
 
         # Retrieve the 'customers' feature view
