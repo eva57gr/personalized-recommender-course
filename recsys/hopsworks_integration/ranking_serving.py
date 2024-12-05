@@ -73,7 +73,7 @@ class HopsworksRankingModel:
 
         ranking_transformer = Transformer(
             script_file=transformer_script_path,
-            resources={"num_instances": 1},
+            resources={"num_instances": 0},
         )
 
         # Deploy ranking model
@@ -81,7 +81,7 @@ class HopsworksRankingModel:
             name=cls.deployment_name,
             description="Deployment that search for item candidates and scores them based on customer metadata",
             script_file=predictor_script_path,
-            resources={"num_instances": 1},
+            resources={"num_instances": 0},
             transformer=ranking_transformer,
         )
 
