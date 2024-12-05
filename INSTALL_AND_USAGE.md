@@ -8,7 +8,7 @@ This guide will help you set up and run a machine learning pipeline that include
 - [🎯 Getting Started](#-getting-started)
 - [⚡️ Running the ML Pipelines](#️-running-the-ml-pipelines)
 - [🌐 Live Demo](#-live-demo)
-- [💻 Running the Streamlit App](#-running-the-streamlit-app)
+- [☁️ Deploying the Streamlit App](#️-deploying-the-streamlit-app)
 
 # 📋 Prerequisites
 
@@ -253,7 +253,7 @@ Try out our deployed H&M real-time personalized recommender:
 > - If you encounter connection errors, try selecting different customers
 > - The system will become responsive once the deployment is active
 
-# ☁️ Deploying Streamlit App
+# ☁️ Deploying the Streamlit App
 
 Deploying a Streamlit App to their [cloud](https://streamlit.io/cloud) is free and straightforward after the GitHub repository is set in right place:
 
