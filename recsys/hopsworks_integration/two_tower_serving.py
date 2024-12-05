@@ -48,30 +48,8 @@ class HopsworksQueryModel:
 
         return output_path
 
-    def register(self, mr, query_df, emb_dim) -> None:
+    def register(self, mr, feature_view, query_df) -> None:
         local_model_path = self.save_to_local()
-
-        # Each model needs to be set up with a
-        # [Model Schema](https://docs.hopsworks.ai/machine-learning-api/latest/generated/model_schema/),
-        # which describes the inputs and outputs for a model.
-        # A schema can either be manually specified or inferred from data.
-
-        # Infer input schema from data.
-        query_model_input_schema = Schema(query_df)
-        # Manually specify output schema.
-        query_model_output_schema = Schema(
-            [
-                {
-                    "name": "query_embedding",
-                    "type": "float32",
-                    "shape": [emb_dim],
-                }
-            ]
-        )
-        query_model_schema = ModelSchema(
-            input_schema=query_model_input_schema,
-            output_schema=query_model_output_schema,
-        )
 
         # Sample a query example from the query DataFrame
         query_example = query_df.sample().to_dict("records")
@@ -81,10 +59,9 @@ class HopsworksQueryModel:
             name="query_model",  # Name of the model
             description="Model that generates query embeddings from user and transaction features",  # Description of the model
             input_example=query_example,  # Example input for the model
-            model_schema=query_model_schema,  # Schema of the model
+            feature_view=feature_view,
         )
 
-        # With the schema in place, you can finally register your model.
         # Save the query_model to the Model Registry
         mr_query_model.save(local_model_path)  # Path to save the model
 
@@ -157,28 +134,8 @@ class HopsworksCandidateModel:
 
         return output_path
 
-    def register(self, mr, item_df, emb_dim):
+    def register(self, mr, feature_view, item_df):
         local_model_path = self.save_to_local()
-
-        # Define the input schema for the candidate_model based on item_df
-        candidate_model_input_schema = Schema(item_df)
-
-        # Define the output schema for the candidate_model, specifying the shape and type of the output
-        candidate_model_output_schema = Schema(
-            [
-                {
-                    "name": "candidate_embedding",  # Name of the output feature
-                    "type": "float32",  # Data type of the output feature
-                    "shape": [emb_dim],  # Shape of the output feature
-                }
-            ]
-        )
-
-        # Combine the input and output schemas to create the overall model schema for the candidate_model
-        candidate_model_schema = ModelSchema(
-            input_schema=candidate_model_input_schema,  # Input schema for the model
-            output_schema=candidate_model_output_schema,  # Output schema for the model
-        )
 
         # Sample a candidate example from the item DataFrame
         candidate_example = item_df.sample().to_dict("records")
@@ -188,7 +145,7 @@ class HopsworksCandidateModel:
             name="candidate_model",  # Name of the model
             description="Model that generates candidate embeddings from item features",  # Description of the model
             input_example=candidate_example,  # Example input for the model
-            model_schema=candidate_model_schema,  # Schema of the model
+            feature_view=feature_view,
         )
 
         # Save the candidate_model to the Model Registry
@@ -205,6 +162,6 @@ class HopsworksCandidateModel:
         model_path = latest_model.download()
 
         candidate_model = tf.saved_model.load(model_path)
-        model_schema = latest_model.model_schema
-
-        return candidate_model, model_schema
+        
+        candidate_features = [*candidate_model.signatures['serving_default'].structured_input_signature[-1].keys()]
+        return candidate_model, candidate_features
