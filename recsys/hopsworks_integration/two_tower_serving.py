@@ -92,14 +92,14 @@ class HopsworksQueryModel:
 
         query_model_transformer = Transformer(
             script_file=transformer_script_path,
-            resources={"num_instances": 0},
+            resources={"num_instances": 1},
         )
 
         # Deploy the query model
         query_model_deployment = query_model.deploy(
             name=cls.deployment_name,
             description="Deployment that generates query embeddings from customer and item features using the query model",
-            resources={"num_instances": 0},
+            resources={"num_instances": 1},
             transformer=query_model_transformer,
         )
 
