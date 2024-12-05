@@ -7,6 +7,8 @@ This guide will help you set up and run a machine learning pipeline that include
 - [📋 Prerequisites](#-prerequisites)
 - [🎯 Getting Started](#-getting-started)
 - [⚡️ Running the ML Pipelines](#️-running-the-ml-pipelines)
+- [🛠️ Additional Operations](#️-additional-operations)
+- [🤖 Running the ML Pipelines in GitHub Actions](#-running-the-ml-pipelines-in-github-actions)
 - [🌐 Live Demo](#-live-demo)
 - [☁️ Deploying the Streamlit App](#️-deploying-the-streamlit-app)
 
