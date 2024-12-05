@@ -5,7 +5,7 @@ install:
 	uv pip install --all-extras --requirement pyproject.toml
 
 start-ui:
-	uv run python -m streamlit run tools/inference_and_ui.py
+	uv run python -m streamlit run streamlit_app.py
 
 clean-hopsworks-resources:
 	uv run python tools/clean_hopsworks_resources.py

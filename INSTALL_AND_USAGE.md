@@ -233,3 +233,51 @@ on:
 - Full pipeline execution takes approximately 1.5 hours
 - Ensure sufficient GitHub Actions minutes available
 - Monitor usage when enabling automated triggers
+
+# 🌐 Live Demo
+
+Try out our deployed recommender system:
+[💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
+
+> [!IMPORTANT]
+> The Hopsworks deployments automatically scale to 0 replicas during periods of inactivity to optimize resources. When accessing the demo:
+> - Initial loading may take 1-2 minutes while the deployment scales up
+> - If you encounter connection errors, try selecting different customers
+> - The system will become responsive once the deployment is active
+
+# ☁️ Deploying Streamlit App
+
+Deploying a Streamlit App to their [cloud](https://streamlit.io/cloud) is free and straightforward after the GitHub repository is set in right place:
+
+- `uv.lock` - installing Python dependencies
+- `packages.txt` - installing system dependencies
+- `streamlit_app.py` - entrypoint to the Streamlit application
+
+## Deployment Steps
+
+### 1. Repository Setup
+Fork the repository if you haven't already:
+```bash
+# Use GitHub's UI to fork the repository
+https://github.com/original-repo/name → Your-Username/name
+```
+[📚 GitHub Fork Guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+
+### 2. Streamlit Cloud Setup
+1. Create a free account on [Streamlit Cloud](https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started)
+2. Navigate to [New App Deployment](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app)
+3. Configure deployment settings:
+
+| Setting | Configuration | Description |
+|---------|--------------|-------------|
+| App Type | ![App Type](assets/streamlit_choose_app_type.png) | Select "Deploy a public app from GitHub" |
+| Main Settings | ![Main Settings](assets/streamlit_choose_main_settings.png) | Configure your repository |
+| Advanced Settings | ![Advanced Settings](assets/streamlit_choose_advanced_settings.png) | Set Python 3.11 and `HOPSWORKS_API_KEY` |
+
+## ⚠️ Important Notes
+- Ensure all required files are present in your repository
+- Python version must be set to 3.11
+- `HOPSWORKS_API_KEY` must be configured in environment variables
+- Repository must be public for free tier deployment
+
+[📚 More on Streamlit Cloud deployments](https://docs.streamlit.io/deploy)

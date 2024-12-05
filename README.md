@@ -86,11 +86,22 @@ At Decoding ML we teach how to build production ML systems, thus the course foll
 │   ...
 │   └── training/       # Training pipelines code
 ├── tools/              # Utility scripts
-├── tests/              # Unit and integration tests
+├── streamlit_app.py    # Streamlit app entry point
 ├── .env.example        # Example environment variables template
 ├── Makefile            # Commands to install and run the project
 ├── pyproject.toml      # Project dependencies
 ```
+
+## 🌐 Live Demo
+
+Try out our deployed recommender system:
+[💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
+
+> [!IMPORTANT]
+> The Hopsworks deployments automatically scale to 0 replicas during periods of inactivity to optimize resources. When accessing the demo:
+> - Initial loading may take 1-2 minutes while the deployment scales up
+> - If you encounter connection errors, try selecting different customers
+> - The system will become responsive once the deployment is active
 
 ## 🚀 Getting Started
 
