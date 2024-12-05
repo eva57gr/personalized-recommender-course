@@ -65,7 +65,7 @@ Our recommendation for each module:
 | Module | Article | Description | Local Notebooks | Colab Notebooks |
 |--------|-------|-------------|----------------|-----------------|
 | 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower model. | **No code** | **No code** |
-| 2 | The feature pipeline | Learn how to build a scalable feature pipeline (WIP) | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
+| 2 | [Feature pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like) | Learn how to build a scalable feature pipeline (WIP) | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
 | 3 | The training pipelines | Learn how to train and evaluate recommendation models (WIP) | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
 | 4 | The inference pipelines | Learn how to deploy models for real-time inference (WIP) | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
 | 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs (WIP) | - | - |
