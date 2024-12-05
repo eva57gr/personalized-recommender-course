@@ -2,6 +2,14 @@
 
 This guide will help you set up and run a machine learning pipeline that includes feature engineering, model training, and deployment using Hopsworks and OpenAI.
 
+# 📑 Table of Contents
+
+- [📋 Prerequisites](#-prerequisites)
+- [🎯 Getting Started](#-getting-started)
+- [⚡️ Running the ML Pipelines](#️-running-the-ml-pipelines)
+- [🌐 Live Demo](#-live-demo)
+- [💻 Running the Streamlit App](#-running-the-streamlit-app)
+
 # 📋 Prerequisites
 
 ## Local Tools
@@ -236,7 +244,7 @@ on:
 
 # 🌐 Live Demo
 
-Try out our deployed recommender system:
+Try out our deployed H&M real-time personalized recommender:
 [💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
 
 > [!IMPORTANT]

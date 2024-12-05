@@ -94,7 +94,7 @@ At Decoding ML we teach how to build production ML systems, thus the course foll
 
 ## 🌐 Live Demo
 
-Try out our deployed recommender system:
+Try out our deployed H&M real-time personalized recommender:
 [💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
 
 > [!IMPORTANT]
