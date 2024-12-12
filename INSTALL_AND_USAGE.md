@@ -123,6 +123,7 @@ Start the Streamlit UI that interfaces with [Hopsworks](https://rebrand.ly/serve
 ```bash
 make start-ui
 ```
+Accessible at `http://localhost:8501/`
 
 ## Clean Up Resources
 Remove all created resources from [Hopsworks Serverless](https://rebrand.ly/serverless-github):
