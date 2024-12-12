@@ -33,15 +33,23 @@ The project requires access to these cloud services:
 
 ## 1. Installation
 
-Set up the project environment by running:
+Set up the project environment by running the following:
 ```bash
 make install
+```
+Test that you have Python 3.11.8 installed in your new `uv` environment:
+```bash
+uv run python --version
+# Output: Python 3.11.8
 ```
 
 This command will:
 - Create a virtual environment using `uv`
 - Activate the virtual environment
 - Install all dependencies from `pyproject.toml`
+
+> [!NOTE]
+> Normally, `uv` will pick the right Python version mentioned in `.python-version` and install it automatically if it is not on your system. If you are having any issues, explicitly install the right Python version by running `make install-python`
 
 ## 2. Environment Configuration
 
