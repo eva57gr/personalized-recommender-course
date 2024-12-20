@@ -98,10 +98,10 @@ Try out our deployed H&M real-time personalized recommender:
 [💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
 
 > [!IMPORTANT]
-> The Hopsworks deployments automatically scale to 0 replicas during periods of inactivity to optimize resources. When accessing the demo:
-> - Initial loading may take 1-2 minutes while the deployment scales up
-> - If you encounter connection errors, try selecting different customers
-> - The system will become responsive once the deployment is active
+> If you get `ModelServingException` or `ConnectionError` errors, the instances are still scaled to 0, so give it a few minutes to scale up. Then, refresh the page. This happens because we are in demo, 0-cost mode:
+> - Scaling from 0 to +1 instances may take 1-2 minutes.
+> - If you encounter connection errors, try selecting different customers or refresh the page.
+> - The system will become responsive once the deployment is active.
 
 ## 🚀 Getting Started
 

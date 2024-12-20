@@ -113,6 +113,12 @@ Each component can be run separately:
    ```
    View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**
 
+<p align="center">
+  <a href="https://rebrand.ly/serverless-github">
+    <img src="assets/hopsworks_deployments.png" alt="hopsworks_deployments" width="800">
+  </a>
+</p>
+
 6. **Materialization Job Scheduling**
    ```bash
    make schedule-materialization-jobs
@@ -132,6 +138,9 @@ Start the Streamlit UI that interfaces with [Hopsworks](https://rebrand.ly/serve
 make start-ui
 ```
 Accessible at `http://localhost:8501/`
+
+> [!IMPORTANT]
+> If you get `ModelServingException` or `ConnectionError` errors, the instances are still scaled to 0, so give it a few minutes to scale up. Then, refresh the page. This happens because we are in demo, 0-cost mode.
 
 ## Clean Up Resources
 Remove all created resources from [Hopsworks Serverless](https://rebrand.ly/serverless-github):
@@ -259,10 +268,7 @@ Try out our deployed H&M real-time personalized recommender:
 [💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
 
 > [!IMPORTANT]
-> The Hopsworks deployments automatically scale to 0 replicas during periods of inactivity to optimize resources. When accessing the demo:
-> - Initial loading may take 1-2 minutes while the deployment scales up
-> - If you encounter connection errors, try selecting different customers
-> - The system will become responsive once the deployment is active
+> If you get `ModelServingException` or `ConnectionError` errors, the instances are still scaled to 0, so give it a few minutes to scale up. Then, refresh the page. This happens because we are in demo, 0-cost mode
 
 # ☁️ Deploying the Streamlit App
 
