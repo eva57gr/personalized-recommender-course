@@ -18,6 +18,7 @@ class Settings(BaseSettings):
 
     # Hopsworks
     HOPSWORKS_API_KEY: SecretStr | None = None
+    HOPSWORKS_PROJECT: str = "recommandersystem"
 
     # OpenAI
     OPENAI_MODEL_ID: str = "gpt-4o-mini"
@@ -44,7 +45,7 @@ class Settings(BaseSettings):
 
     # Inference
     RANKING_MODEL_TYPE: str = "ranking"
-    CUSTOM_HOPSWORKS_INFERENCE_ENV: str = "custom-env-name"
+    CUSTOM_HOPSWORKS_INFERENCE_ENV: str = "custom_env_name"
 
 
 settings = Settings()
