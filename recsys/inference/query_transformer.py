@@ -13,8 +13,7 @@ class Transformer(object):
         project = hopsworks.login()
         ms = project.get_model_serving()
 
-        # todo call _retrieve_secrets once secrets api accessible from Hopsworks machine
-        # self._retrieve_secrets()
+        self._retrieve_secrets()
 
         # Retrieve the 'customers' feature view
         fs = project.get_feature_store()
@@ -28,13 +27,12 @@ class Transformer(object):
         self.ranking_fv.init_batch_scoring(1)
 
         # Retrieve the ranking deployment
-        # TODO handle this in secrets
-        self.ranking_server = ms.get_deployment("ranking")
+        self.ranking_server = ms.get_deployment(self.ranking_model_type)
 
     def _retrieve_secrets(self):
         secrets_api = hopsworks.connection().get_secrets_api()
         try:
-            self.ranking_model_type = secrets_api.get_secret("RANKING_MODEL_TYPE")
+            self.ranking_model_type = secrets_api.get_secret("RANKING_MODEL_TYPE").value
         except Exception as e:
             logging.error(e)
             logging.error("Could not retrieve secret RANKING_MODEL_TYPE, defaulting to ranker")
