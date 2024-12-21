@@ -62,14 +62,13 @@ class Predict(object):
                                 "graphical_appearance_name", "colour_group_name", "perceived_colour_value_name",
                                 "perceived_colour_master_name", "department_name", "index_name", "index_group_name",
                                 "section_name", "garment_group_name"]
-        # todo get it using _retrieve_secrets after update of hopsworks lib is done
-        self.openai_api_key = "OPENAI_API_KEY"
+        self._retrieve_secrets()
         self.llm = self._build_lang_chain()
         self.parser = ScoreOutputParser()
 
     def _retrieve_secrets(self):
         secrets_api = hopsworks.connection().get_secrets_api()
-        self.openai_api_key = secrets_api.get_secret("OPENAI_API_KEY")
+        self.openai_api_key = secrets_api.get_secret("OPENAI_API_KEY").value
 
     def predict(self, inputs):
         logging.info(f"✅ Inputs: {inputs}")
