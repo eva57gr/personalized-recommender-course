@@ -23,8 +23,7 @@ class HopsworksLLMRankingModel:
         cls._prepare_secrets()
 
         project = hopsworks.login()
-        # todo call prep environment once hopsworks upgrade
-        # cls._prepare_environment(project)
+        cls._prepare_environment(project)
         mr = project.get_model_registry()
         dataset_api = project.get_dataset_api()
 
@@ -97,7 +96,7 @@ class HopsworksLLMRankingModel:
         if settings.CUSTOM_HOPSWORKS_INFERENCE_ENV in existing_envs:
             env = env_api.get_environment(settings.CUSTOM_HOPSWORKS_INFERENCE_ENV)
         else:
-            env = env_api.create_environment(name=settings.CUSTOM_HOPSWORKS_INFERENCE_ENV)
+            env = env_api.create_environment(name=settings.CUSTOM_HOPSWORKS_INFERENCE_ENV, base_environment_name="pandas-inference-pipeline")
 
         # Install the extra requirements in the Python environment on Hopsworks
         env.install_requirements(requirements_path)
