@@ -30,7 +30,11 @@ def process_description(description):
 
 
 def get_item_image_url(item_id, articles_fv):
-    return articles_fv.get_feature_vector({"article_id": item_id})[-1]
+    article_feature_view = articles_fv.get_feature_vector({"article_id": item_id})
+    if not article_feature_view:
+        return None
+
+    return article_feature_view[-1]
 
 
 @st.cache_resource()
