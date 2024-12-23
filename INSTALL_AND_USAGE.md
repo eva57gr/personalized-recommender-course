@@ -125,9 +125,9 @@ Each component can be run separately:
    ```
    View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Compute → Ingestions**
 
-7. **Deploy LLM Predictor**
+7. **Deployment Creation with LLM Ranking**
    ```bash
-   make deploy-llm-predictor
+   make create-deployments-llm-ranking
    ```
    View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**
 
@@ -135,20 +135,25 @@ Each component can be run separately:
 - All notebooks are executed using IPython through the UV virtual environment
 - Components should be run in the specified order when executing individually
 - Ensure UV is properly installed and configured before running any commands
-- When changing the variables stored in the secrets api ( OPENAI_API_KEY, RANKING_MODEL_TYPE) make sure to delete the secrets first, as they need to be deleted and recreated
-- Make sure to delete the "query" deployment when switching from one type of ranker to the other
 
 # 🛠️ Additional Operations
 
 ## Launch Frontend Application
-Start the Streamlit UI that interfaces with [Hopsworks](https://rebrand.ly/serverless-github):
+After running the standard deployments from **5. Deployment Creation**, start the Streamlit UI that interfaces the CatBoost ranker:
 ```bash
 make start-ui
 ```
+After running the LLM deployments from **7. Deployment Creation with LLM Ranking**, start the Streamlit UI that interfaces the LLM ranker:
+```bash
+make start-ui-llm-ranking
+```
 Accessible at `http://localhost:8501/`
 
+> [!WARNING]
+> The Streamlit UI command is compatible only with its corresponding deployment. For example, running the deployment from **5. Deployment Creation** and `make start-ui-llm-ranking` won't work.
+
 > [!IMPORTANT]
-> If you get `ModelServingException` or `ConnectionError` errors, the instances are still scaled to 0, so give it a few minutes to scale up. Then, refresh the page. This happens because we are in demo, 0-cost mode.
+> The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
 
 ## Clean Up Resources
 Remove all created resources from [Hopsworks Serverless](https://rebrand.ly/serverless-github):
@@ -276,7 +281,7 @@ Try out our deployed H&M real-time personalized recommender:
 [💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
 
 > [!IMPORTANT]
-> If you get `ModelServingException` or `ConnectionError` errors, the instances are still scaled to 0, so give it a few minutes to scale up. Then, refresh the page. This happens because we are in demo, 0-cost mode
+> The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
 
 # ☁️ Deploying the Streamlit App
 

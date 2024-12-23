@@ -68,7 +68,7 @@ Our recommendation for each module:
 | 2 | [Feature pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like) | Learn how to build a scalable feature pipeline using a feature store. | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
 | 3 | [Training pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/training-pipelines-for-tiktok-like) | Learn to train and evaluate the two-tower network and ranking model using MLOps best practices. | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
 | 4 | The inference pipelines | Learn how to deploy models for real-time inference (WIP) | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
-| 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs | •[7_ip_creating_llm_ranking_deployment.ipynb](notebooks/7_ip_creating_llm_ranking_deployment.ipynb) | - |
+| 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs | •[7_ip_creating_deployments_llm_ranking.ipynb](notebooks/7_ip_creating_deployments_llm_ranking.ipynb) | - |
 
 > [!NOTE]
 > Check the [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) doc for a step-by-step installation and usage guide.
@@ -98,10 +98,7 @@ Try out our deployed H&M real-time personalized recommender:
 [💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
 
 > [!IMPORTANT]
-> If you get a `ConnectionError` error, it means the instances are scaled to 0, so give it a few minutes to scale up. Then, refresh the page. This happens because we are in demo, 0-cost mode:
-> - Scaling from 0 to +1 instances may take 1-2 minutes.
-> - If you encounter connection errors, try selecting a different customer or refresh the page to make another request.
-> - The system will become responsive once the deployment is scaled back to +1 instances
+> The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
 
 ## 🚀 Getting Started
 

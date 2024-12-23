@@ -7,7 +7,10 @@ install:
 	uv pip install --all-extras --requirement pyproject.toml
 
 start-ui:
-	uv run python -m streamlit run streamlit_app.py
+	RANKING_MODEL_TYPE=ranking uv run python -m streamlit run streamlit_app.py
+
+start-ui-llm-ranking:
+	RANKING_MODEL_TYPE=llmranking uv run python -m streamlit run streamlit_app.py
 
 clean-hopsworks-resources:
 	uv run python tools/clean_hopsworks_resources.py
@@ -29,8 +32,8 @@ create-embeddings:
 create-deployments:
 	uv run ipython notebooks/5_ip_creating_deployments.ipynb
 
-deploy-llm-predictor:
-	uv run ipython notebooks/7_ip_creating_llm_ranking_deployment.ipynb
-
 schedule-materialization-jobs:
 	uv run ipython notebooks/6_scheduling_materialization_jobs.ipynb
+
+create-deployments-llm-ranking:
+	uv run ipython notebooks/7_ip_creating_deployments_llm_ranking.ipynb

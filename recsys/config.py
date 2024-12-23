@@ -1,5 +1,6 @@
 from enum import Enum
 from pathlib import Path
+from typing import Literal
 
 from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -18,7 +19,6 @@ class Settings(BaseSettings):
 
     # Hopsworks
     HOPSWORKS_API_KEY: SecretStr | None = None
-    HOPSWORKS_PROJECT: str = "recommandersystem"
 
     # OpenAI
     OPENAI_MODEL_ID: str = "gpt-4o-mini"
@@ -44,7 +44,7 @@ class Settings(BaseSettings):
     RANKING_EARLY_STOPPING_ROUNDS: int = 5
 
     # Inference
-    RANKING_MODEL_TYPE: str = "ranking"
+    RANKING_MODEL_TYPE: Literal["ranking", "llmranking"] = "ranking"
     CUSTOM_HOPSWORKS_INFERENCE_ENV: str = "custom_env_name"
 
 
