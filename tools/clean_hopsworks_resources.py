@@ -19,13 +19,21 @@ for deployment in deployments:
 mr = project.get_model_registry()
 
 # List all models
-for model_name in ["llm_ranking_model", "ranking_model", "candidate_model", "query_model"]:
+for model_name in [
+    "llm_ranking_model",
+    "ranking_model",
+    "candidate_model",
+    "query_model",
+]:
     models = mr.get_models(name=model_name)
 
     # Delete each model
     for model in models:
         print(f"Deleting model: {model.name} (version: {model.version})")
-        model.delete()
+        try:
+            model.delete()
+        except Exception:
+            print(f"Failed to delete model {model_name}.")
 
 # Get feature store
 fs = project.get_feature_store()
