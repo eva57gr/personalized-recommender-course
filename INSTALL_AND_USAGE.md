@@ -125,10 +125,18 @@ Each component can be run separately:
    ```
    View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Compute → Ingestions**
 
+7. **Deploy LLM Predictor**
+   ```bash
+   make deploy-llm-predictor
+   ```
+   View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**
+
 ## 🚨 Important Notes
 - All notebooks are executed using IPython through the UV virtual environment
 - Components should be run in the specified order when executing individually
 - Ensure UV is properly installed and configured before running any commands
+- When changing the variables stored in the secrets api ( OPENAI_API_KEY, RANKING_MODEL_TYPE) make sure to delete the secrets first, as they need to be deleted and recreated
+- Make sure to delete the "query" deployment when switching from one type of ranker to the other
 
 # 🛠️ Additional Operations
 
