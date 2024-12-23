@@ -1,3 +1,4 @@
+import time
 from datetime import datetime
 
 import streamlit as st
@@ -65,7 +66,12 @@ def display_item(item_id, score, articles_fv, customer_id, tracker, source):
 
 
 def customer_recommendations(
-    articles_fv, ranking_deployment, query_model_deployment, customer_id
+    articles_fv,
+    ranking_deployment,
+    query_model_deployment,
+    customer_id,
+    max_retries: int = 5,
+    retry_delay: int = 30,
 ):
     """Handle customer-based recommendations"""
     tracker = get_tracker()
@@ -93,14 +99,30 @@ def customer_recommendations(
             st.session_state.prediction_time = formatted_timestamp
             st.session_state.last_customer_id = customer_id
 
-            # Get predictions from model
+            # Get predictions from model using a retry mechanism in case of failure.
             deployment_input = [
                 {"customer_id": customer_id, "transaction_date": formatted_timestamp}
             ]
-
-            prediction = query_model_deployment.predict(inputs=deployment_input)[
-                "predictions"
-            ]["ranking"]
+            warning_placeholder = None
+            for attempt in range(max_retries):
+                try:
+                    prediction = query_model_deployment.predict(
+                        inputs=deployment_input
+                    )["predictions"]["ranking"]
+                    if warning_placeholder:
+                        warning_placeholder.empty()
+                    break
+                except Exception as e:
+                    if attempt < max_retries - 1:
+                        warning_placeholder = st.warning(
+                            f"⚠️ Failed to call the H&M recommender deployment. It's probably scaling from 0 to +1 instances, which may take 1-2 minutes. Retrying in {retry_delay} seconds..."
+                        )
+                        time.sleep(retry_delay)
+                    else:
+                        st.error(
+                            f"❌ Failed to get predictions after {max_retries} retries"
+                        )
+                        raise e
 
             # Filter out purchased items
             available_items = [
