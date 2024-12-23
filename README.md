@@ -98,10 +98,10 @@ Try out our deployed H&M real-time personalized recommender:
 [💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
 
 > [!IMPORTANT]
-> If you get `ModelServingException` or `ConnectionError` errors, the instances are still scaled to 0, so give it a few minutes to scale up. Then, refresh the page. This happens because we are in demo, 0-cost mode:
+> If you get a `ConnectionError` error, it means the instances are scaled to 0, so give it a few minutes to scale up. Then, refresh the page. This happens because we are in demo, 0-cost mode:
 > - Scaling from 0 to +1 instances may take 1-2 minutes.
-> - If you encounter connection errors, try selecting different customers or refresh the page.
-> - The system will become responsive once the deployment is active.
+> - If you encounter connection errors, try selecting a different customer or refresh the page to make another request.
+> - The system will become responsive once the deployment is scaled back to +1 instances
 
 ## 🚀 Getting Started
 
