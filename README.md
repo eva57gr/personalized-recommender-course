@@ -15,13 +15,12 @@
 
 This hands-on course teaches you how to build and deploy a real-time personalized recommender system for H&M fashion articles. You'll learn:
 
-- A practical 4-stage recommender architecture
-- Two-tower model implementation and training
-- Scalable ML system design principles
-- MLOps best practices
-- Real-time model deployment
-- LLM-enhanced recommendations
-- Building an interactive web interface
+- To architect a modern ML system for real-time personalized recommenders.
+- To do feature engineering using modern tools such as Polars.
+- To design and train ML models for recommenders powered by neural networks.
+- To use MLOps best practices by leveraging [Hopsworks AI Lakehouse](https://rebrand.ly/homepage-github).
+- To deploy the recommender on a Kubernetes cluster managed by [Hopsworks Serverless](https://rebrand.ly/serverless-github) using KServe.
+- To apply LLM techniques for personalized recommendations.
 
 <p align="center">
   <img src="assets/4_stage_recommender_architecture.png" alt="4_stage_recommender_architecture" width="400" style="display: inline-block; margin-right: 20px;">
@@ -30,8 +29,33 @@ This hands-on course teaches you how to build and deploy a real-time personalize
 
 ## ❔ About This Course
 
+This course is part of Decoding ML's open-source series, where we provide free hands-on resources for building GenAI and recommender systems.
 
+The **Hands-on H&M Real-Time Personalized Recommender**, in collaboration with [Hopsworks](https://rebrand.ly/homepage-github), is a 5-module course backed up by code, Notebooks and lessons that will teach you how to build an H&M real-time personalized recommender from scratch.
 
+By the end of this course, you will know how to architect, build and deploy a modern recommender.
+
+**What you'll do:**
+
+1. Architect a scalable and modular ML system using the Feature/Training/Inference (FTI) architecture.
+3. Feature engineering on top of our H&M data for collaborative and content-based filtering techniques for recommenders.
+2. Use the two-tower network to Create user and item embeddings in the same vector space.
+3. Implement an H&M real-time personalized recommender using the 4-stage recommender design and a vector database.
+4. Use MLOps best practices, such as a feature store and a model registry.
+5. Deploy the online inference pipeline to Kubernetes using KServe.
+6. Deploy the offline ML pipelines to GitHub Actions.
+7. Implement a web interface using Streamlit.
+8. Improve the H&M real-time personalized recommender using LLMs.
+
+🥷 With these skills, you'll become a ninja in building real-time personalized recommenders. 
+
+## 🌐 Live Demo
+
+Try out our deployed H&M real-time personalized recommender:
+[💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
+
+> [!IMPORTANT]
+> The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
 
 ## 👥 Who Should Join?
 
@@ -54,8 +78,8 @@ This hands-on course teaches you how to build and deploy a real-time personalize
 
 All tools used throughout the course will stick to their free tier, except OpenAI's API, as follows:
 
-- Lessons 1-4: Completely free
-- Lesson 5 (Optional): ~$1-2 for OpenAI API usage when building LLM-enhanced recommenders
+- Modules 1-4: Completely free
+- Module 5 (Optional): ~$1-2 for OpenAI API usage when building LLM-enhanced recommenders
 
 ## 🥂 Open-source Course: Participation is Open and Free
 
@@ -71,8 +95,6 @@ Our recommendation for each module:
 1. Read the article
 2. Run the Notebook to replicate our results (locally or on Colab)
 3. Following the Notebook, go deeper into the code by reading the `recsys` Python module
-
-🥷 You will become a ninja in building real-time personalized recommenders by the end. 
 
 | Module | Article | Description | Notebooks |
 |--------|-------|-------------|----------------|
@@ -119,14 +141,6 @@ It contains:
 - 31 million transactions 
 
 More on the dataset in the feature engineering pipeline [Notebook](notebooks/1_fp_computing_features.ipynb) and [article](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like).
-
-## 🌐 Live Demo
-
-Try out our deployed H&M real-time personalized recommender:
-[💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
-
-> [!IMPORTANT]
-> The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
 
 ## 🚀 Getting Started
 
