@@ -51,8 +51,8 @@ By the end of this course, you will know how to architect, build and deploy a mo
 
 ## 🌐 Live Demo
 
-Try out our deployed H&M real-time personalized recommender:
-[💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
+Try out our deployed H&M real-time personalized recommender to see what you'll learn to build by the end of this course:
+[💻 Live H&M Recommender Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
 
 > [!IMPORTANT]
 > The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.

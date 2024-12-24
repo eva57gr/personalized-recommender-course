@@ -30,7 +30,7 @@ The project requires access to these cloud services:
 |---------|---------|------|---------------------|-------------|
 | [Hopsworks](https://rebrand.ly/serverless-github) | AI Lakehouse for feature store, model registry, and serving | Free tier available | `HOPSWORKS_API_KEY` | [Create API Key](https://docs.hopsworks.ai/latest/user_guides/projects/api_key/create_api_key/) |
 | [GitHub Actions](https://github.com/features/actions) | Compute & Automation | Free for public repos | - | - |
-| [OpenAI API](https://openai.com/index/openai-api/) | LLM API for recommender system | Pay-per-use | `OPENAI_API_KEY`<br>`OPENAI_MODEL_ID` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) |
+| [OpenAI API](https://openai.com/index/openai-api/) | LLM API for recommender system | Pay-per-use | `OPENAI_API_KEY` | [Quick Start Guide](https://platform.openai.com/docs/quickstart) |
 
 # 🎯 Getting Started
 
@@ -312,8 +312,8 @@ on:
 
 # 🌐 Live Demo
 
-Try out our deployed H&M real-time personalized recommender:
-[💻 Live Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
+Try out our deployed H&M real-time personalized recommender to see what you'll learn to build by the end of this course:
+[💻 Live H&M Recommender Streamlit Demo](https://decodingml-hands-on-personalized-recommender.streamlit.app/)
 
 > [!IMPORTANT]
 > The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
