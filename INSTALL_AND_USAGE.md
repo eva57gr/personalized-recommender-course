@@ -6,8 +6,7 @@ This guide will help you set up and run a machine learning pipeline that include
 
 - [📋 Prerequisites](#-prerequisites)
 - [🎯 Getting Started](#-getting-started)
-- [⚡️ Running the ML Pipelines](#️-running-the-ml-pipelines)
-- [🛠️ Additional Operations](#️-additional-operations)
+- [⚡️ Running the H&M Personalized Recommender](#️-running-the-hm-personalized-recommender)
 - [🤖 Running the ML Pipelines in GitHub Actions](#-running-the-ml-pipelines-in-github-actions)
 - [🌐 Live Demo](#-live-demo)
 - [☁️ Deploying the Streamlit App](#️-deploying-the-streamlit-app)
@@ -60,11 +59,13 @@ Before running any components:
    ```
 2. Open `.env` and configure the required credentials following the inline comments.
 
-# ⚡️ Running the ML Pipelines
+# ⚡️ Running the H&M Personalized Recommender
+
+## Running the ML Pipelines
 
 You can run the entire pipeline at once or execute individual components.
 
-## Running the Complete Pipeline
+### Running the Complete Pipeline
 
 Execute all components in sequence:
 ```bash
@@ -79,39 +80,39 @@ This runs the following steps:
 5. Inference pipeline deployment
 6. Materialization job scheduling
 
-## Running Individual Components
+### Running Individual Components
 
 Each component can be run separately:
 
 1. **Feature Engineering**
-   ```bash
-   make feature-engineering
-   ```
-   View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Feature Store → Feature Groups**
+```bash
+make feature-engineering
+```
+View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Feature Store → Feature Groups**
 
 2. **Retrieval Model Training**
-   ```bash
-   make train-retrieval
-   ```
-   View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Model Registry**
+```bash
+make train-retrieval
+```
+View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Model Registry**
 
 3. **Ranking Model Training**
-   ```bash
-   make train-ranking
-   ```
-   View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Model Registry**
+```bash
+make train-ranking
+```
+View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Model Registry**
 
 4. **Embeddings Creation**
-   ```bash
-   make create-embeddings
-   ```
-   View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Feature Store → Feature Groups**
+```bash
+make create-embeddings
+```
+View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Feature Store → Feature Groups**
 
 5. **Deployment Creation**
-   ```bash
-   make create-deployments
-   ```
-   View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**
+```bash
+make create-deployments
+```
+View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**
 
 <p align="center">
   <a href="https://rebrand.ly/serverless-github">
@@ -119,31 +120,31 @@ Each component can be run separately:
   </a>
 </p>
 
-6. **Materialization Job Scheduling**
-   ```bash
-   make schedule-materialization-jobs
-   ```
-   View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Compute → Ingestions**
-
-7. **Deployment Creation with LLM Ranking**
-   ```bash
-   make create-deployments-llm-ranking
-   ```
-   View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**
-
-## 🚨 Important Notes
-- All notebooks are executed using IPython through the UV virtual environment
-- Components should be run in the specified order when executing individually
-- Ensure UV is properly installed and configured before running any commands
-
-# 🛠️ Additional Operations
-
-## Launch Frontend Application
-After running the standard deployments from **5. Deployment Creation**, start the Streamlit UI that interfaces the CatBoost ranker:
+Start the Streamlit UI that interfaces the CatBoost ranker:
 ```bash
 make start-ui
 ```
-After running the LLM deployments from **7. Deployment Creation with LLM Ranking**, start the Streamlit UI that interfaces the LLM ranker:
+Accessible at `http://localhost:8501/`
+
+> [!IMPORTANT]
+> The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
+
+6. **Materialization Job Scheduling**
+```bash
+make schedule-materialization-jobs
+```
+View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Compute → Ingestions**
+
+7. **Deployment Creation with LLM Ranking**
+```bash
+make create-deployments-llm-ranking
+```
+View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**
+
+> [!WARNING]
+> The LLM Ranking deployment overrides the deployment from **5. Deployment Creation**
+
+Start the Streamlit UI that interfaces the LLM ranker:
 ```bash
 make start-ui-llm-ranking
 ```
@@ -152,10 +153,13 @@ Accessible at `http://localhost:8501/`
 > [!WARNING]
 > The Streamlit UI command is compatible only with its corresponding deployment. For example, running the deployment from **5. Deployment Creation** and `make start-ui-llm-ranking` won't work.
 
-> [!IMPORTANT]
-> The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
+## 🚨 Important Notes
+- All notebooks are executed using IPython through the UV virtual environment
+- Components should be run in the specified order when executing individually
+- Ensure UV is properly installed and configured before running any commands
 
 ## Clean Up Resources
+
 Remove all created resources from [Hopsworks Serverless](https://rebrand.ly/serverless-github):
 ```bash
 make clean-hopsworks-resources
