@@ -57,6 +57,12 @@ Try out our deployed H&M real-time personalized recommender to see what you'll l
 > [!IMPORTANT]
 > The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
 
+<p align="center">
+  <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
+    <img src="assets/ui_example.png" alt="UI Example" width="800">
+  </a>
+</p>
+
 ## 👥 Who Should Join?
 
 **This course is ideal for:**
@@ -147,12 +153,6 @@ More on the dataset in the feature engineering pipeline [Notebook](notebooks/1_f
 For detailed installation and usage instructions, see our [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) guide.
 
 **Recommendation:** While you can follow the installation guide directly, we strongly recommend reading the accompanying articles to gain a complete understanding of the recommender system.
-
-<p align="center">
-  <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
-    <img src="assets/ui_example.png" alt="UI Example" width="800">
-  </a>
-</p>
 
 ## 💡 Questions and Troubleshooting
 

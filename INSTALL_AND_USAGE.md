@@ -318,6 +318,12 @@ Try out our deployed H&M real-time personalized recommender to see what you'll l
 > [!IMPORTANT]
 > The demo is in 0-cost mode, which means that when there is no traffic, the deployment scales to 0 instances. The first time you interact with it, give it 1-2 minutes to warm up to 1+ instances. Afterward, everything will become smoother.
 
+<p align="center">
+  <a href="https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022">
+    <img src="assets/ui_example.png" alt="UI Example" width="800">
+  </a>
+</p>
+
 # ☁️ Deploying the Streamlit App
 
 Deploying a Streamlit App to their [cloud](https://streamlit.io/cloud) is free and straightforward after the GitHub repository is set in right place:
