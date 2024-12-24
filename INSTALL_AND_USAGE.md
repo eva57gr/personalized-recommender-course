@@ -15,9 +15,6 @@ This guide will help you set up and run a machine learning pipeline that include
 
 ## Local Tools
 You'll need the following tools installed locally:
-- [Python v3.11](https://www.python.org/downloads/)
-- [uv v0.4.30](https://github.com/astral-sh/uv) - Python package installer and virtual environment manager
-- [GNU Make 3.81](https://www.gnu.org/software/make/) - Build automation tool
 
 | Tool | Version | Purpose | Installation Link |
 |------|---------|---------|------------------|
@@ -80,7 +77,7 @@ Before running any components:
 
 ## Notebooks
 
-For instructions on exploring the Notebooks, check out the [📚 Course](https://github.com/decodingml/personalized-recommender-course?tab=readme-ov-file#-course) section from the main [README](https://github.com/decodingml/personalized-recommender-course?tab=readme-ov-file#-course).
+For instructions on exploring the Notebooks, check out the [📚 Course](https://github.com/decodingml/personalized-recommender-course?tab=readme-ov-file#-course-outline) section from the main [README](https://github.com/decodingml/personalized-recommender-course?tab=readme-ov-file#-course-outline).
 
 ## Running the ML Pipelines
 
@@ -168,6 +165,7 @@ make schedule-materialization-jobs
 View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Compute → Ingestions**
 
 7. **Deployment Creation with LLM Ranking (Optional)**
+
 Optional step to replace the standard deployments (created in Step 5) with the ones powered by LLMs:
 ```bash
 make create-deployments-llm-ranking
@@ -186,7 +184,7 @@ Accessible at `http://localhost:8501/`
 > [!WARNING]
 > The Streamlit UI command is compatible only with its corresponding deployment. For example, running the deployment from **5. Deployment Creation** and `make start-ui-llm-ranking` won't work.
 
-## 🚨 Important Notes
+### 🚨 Important Notes
 - Ensure UV is properly installed and configured before running any commands
 - All notebooks are executed using IPython through the UV virtual environment
 - Components should be run in the specified order when executing individually
