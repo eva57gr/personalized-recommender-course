@@ -69,7 +69,7 @@ Our recommendation for each module:
 🥷 You will become a ninja in building real-time personalized recommenders by the end. 
 
 | Module | Article | Description | Notebooks |
-|--------|-------|-------------|----------------|-----------------|
+|--------|-------|-------------|----------------|
 | 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower network. | **No code** |
 | 2 | [Feature pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like) | Learn how to build a scalable feature pipeline using a feature store. | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) |
 | 3 | [Training pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/training-pipelines-for-tiktok-like) | Learn to train and evaluate the two-tower network and ranking model using MLOps best practices. | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) |
