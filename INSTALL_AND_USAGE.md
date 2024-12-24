@@ -184,17 +184,17 @@ Accessible at `http://localhost:8501/`
 > [!WARNING]
 > The Streamlit UI command is compatible only with its corresponding deployment. For example, running the deployment from **5. Deployment Creation** and `make start-ui-llm-ranking` won't work.
 
-### 🚨 Important Notes
-- Ensure UV is properly installed and configured before running any commands
-- All notebooks are executed using IPython through the UV virtual environment
-- Components should be run in the specified order when executing individually
-
 ## Clean Up Resources
 
 Remove all created resources from [Hopsworks Serverless](https://rebrand.ly/serverless-github):
 ```bash
 make clean-hopsworks-resources
 ```
+
+### 🚨 Important Notes
+- Ensure UV is properly installed and configured before running any commands
+- All notebooks are executed using IPython through the UV virtual environment
+- Components should be run in the specified order when executing individually
 
 # 🤖 Running the ML Pipelines in GitHub Actions
 
