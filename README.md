@@ -11,7 +11,7 @@
   </a>
 </p>
 
-## 🎯 About This Course
+## 🎯 What You'll Learn
 
 This hands-on course teaches you how to build and deploy a real-time personalized recommender system for H&M fashion articles. You'll learn:
 
@@ -28,8 +28,12 @@ This hands-on course teaches you how to build and deploy a real-time personalize
   <img src="assets/two_tower_embedding_model.png" alt="two_tower_embedding_model" width="400" style="display: inline-block;">
 </p>
 
+## ❔ About This Course
 
-## 👥 Target Audience
+
+
+
+## 👥 Who Should Join?
 
 **This course is ideal for:**
 - ML/AI engineers interested in building production-ready recommender systems
@@ -41,8 +45,8 @@ This hands-on course teaches you how to build and deploy a real-time personalize
 
 | Category | Requirements |
 |----------|-------------|
-| **Skills** | Basic knowledge of Python and Machine Learning |
-| **Hardware** | Any modern laptop/workstation will do the job (no GPU or powerful computing power required). |
+| **Skills** | Basic understanding of Python and Machine Learning |
+| **Hardware** | Any modern laptop/workstation will do the job (no GPU or powerful computing power required). We also support Google Colab or GitHub Actions for compute.|
 | **Level** | Intermediate |
 
 
@@ -53,13 +57,15 @@ All tools used throughout the course will stick to their free tier, except OpenA
 - Lessons 1-4: Completely free
 - Lesson 5 (Optional): ~$1-2 for OpenAI API usage when building LLM-enhanced recommenders
 
-## 📚 Course
+## 🥂 Open-source Course: Participation is Open and Free
 
-This **self-paced course consists of 5 comprehensive modules** covering theory, system design, and hands-on implementation.
+As an open-source course, everything is self-paced, free of charge and with its resources freely accessible as follows:
+- **code**: this GitHub repository
+- **articles**: [Decoding ML](https://decodingml.substack.com/p/the-ultimate-recommender-system-framework)
 
-Everything is free of charge and accessible as follows:
-- code: this GitHub repository
-- articles: Decoding ML
+## 📚 Course Outline:
+
+This **open-source course consists of 5 comprehensive modules** covering theory, system design, and hands-on implementation.
 
 Our recommendation for each module:
 1. Read the article
@@ -79,6 +85,9 @@ Our recommendation for each module:
 > [!NOTE]
 > Check the [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) doc for a step-by-step installation and usage guide.
 
+### Google Colab
+
+To run the Notebooks in Google Colab, copy-paste them into your Google Drive, open them, and run them. Our setup steps will prepare the Python environment automatically.
 
 ## 🏗️ Project Structure
 
@@ -160,7 +169,6 @@ When having issues with [Hopsworks Serverless](https://rebrand.ly/serverless-git
 </table>
 
 ## Contributors
-
 
 <table>
   <tr>
