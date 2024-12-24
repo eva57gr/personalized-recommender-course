@@ -17,7 +17,7 @@ This hands-on course teaches you how to build and deploy a real-time personalize
 
 - To architect a modern ML system for real-time personalized recommenders.
 - To do feature engineering using modern tools such as Polars.
-- To design and train ML models for recommenders powered by neural networks.
+- To design and train ML models for recommender systems powered by neural networks.
 - To use MLOps best practices by leveraging [Hopsworks AI Lakehouse](https://rebrand.ly/homepage-github).
 - To deploy the recommender on a Kubernetes cluster managed by [Hopsworks Serverless](https://rebrand.ly/serverless-github) using KServe.
 - To apply LLM techniques for personalized recommendations.
@@ -164,6 +164,14 @@ Open a [GitHub issue](https://github.com/decodingml/hands-on-personalized-recomm
 - Clarification on concepts
 
 When having issues with [Hopsworks Serverless](https://rebrand.ly/serverless-github), the best place to ask questions is on [Hopsworks's Slack](https://join.slack.com/t/public-hopsworks/shared_invite/zt-1uf21vitz-rhHKNdIf8GEiOf1EJ6Wzsw), where their engineers can help you directly.
+
+## 🥂 Contributing
+
+As an open-source course, we may not be able to fix all the bugs that arise.
+
+If you find any bugs and know how to fix them, support future readers by contributing to this course with your bug fix.
+
+We will deeply appreciate your support for the AI community and future readers 🤗
 
 ## Sponsors
 
