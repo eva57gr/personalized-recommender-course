@@ -19,6 +19,13 @@ You'll need the following tools installed locally:
 - [uv v0.4.30](https://github.com/astral-sh/uv) - Python package installer and virtual environment manager
 - [GNU Make 3.81](https://www.gnu.org/software/make/) - Build automation tool
 
+| Tool | Version | Purpose | Installation Link |
+|------|---------|---------|------------------|
+| Python | 3.11 | Programming language runtime | [Download](https://www.python.org/downloads/) |
+| uv | ≥ 0.4.30 | Python package installer and virtual environment manager | [Download](https://github.com/astral-sh/uv) |
+| GNU Make | ≥ 3.81 | Build automation tool | [Download](https://www.gnu.org/software/make/) |
+| Git | ≥2.44.0 | Version control | [Download](https://git-scm.com/downloads)
+
 ## Cloud Services
 The project requires access to these cloud services:
 
@@ -30,7 +37,17 @@ The project requires access to these cloud services:
 
 # 🎯 Getting Started
 
-## 1. Installation
+## 1. Clone the Repository
+
+Start by cloning the repository and navigating to the project directory:
+```
+git clone https://github.com/decodingml/personalized-recommender-course.git
+cd personalized-recommender-course 
+```
+
+Next, we have to prepare your Python environment and its adjacent dependencies.
+
+## 2. Installation
 
 Set up the project environment by running the following:
 ```bash
@@ -50,27 +67,32 @@ This command will:
 > [!NOTE]
 > Normally, `uv` will pick the right Python version mentioned in `.python-version` and install it automatically if it is not on your system. If you are having any issues, explicitly install the right Python version by running `make install-python`
 
-## 2. Environment Configuration
+## 3. Environment Configuration
 
 Before running any components:
 1. Create your environment file:
    ```bash
    cp .env.example .env
    ```
-2. Open `.env` and configure the required credentials following the inline comments.
+2. Open `.env` and configure the required credentials following the inline comments and the recommendations from the [Cloud Services](#-prerequisites) section.
 
 # ⚡️ Running the H&M Personalized Recommender
+
+## Notebooks
+
+For instructions on exploring the Notebooks, check out the [📚 Course](https://github.com/decodingml/personalized-recommender-course?tab=readme-ov-file#-course) section from the main [README](https://github.com/decodingml/personalized-recommender-course?tab=readme-ov-file#-course).
 
 ## Running the ML Pipelines
 
 You can run the entire pipeline at once or execute individual components.
 
-### Running the Complete Pipeline
+### Running Everything in One Go (Quick)
 
-Execute all components in sequence:
+Execute all the ML pipelines in a sequence:
 ```bash
 make all
 ```
+It will take ~1.5 hours to run, depending on your machine. 
 
 This runs the following steps:
 1. Feature engineering
@@ -80,7 +102,15 @@ This runs the following steps:
 5. Inference pipeline deployment
 6. Materialization job scheduling
 
-### Running Individual Components
+View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**
+
+Start the Streamlit UI:
+```bash
+make start-ui
+```
+Accessible at `http://localhost:8501/`
+
+### Running Individual Components (Recommended)
 
 Each component can be run separately:
 
@@ -88,6 +118,8 @@ Each component can be run separately:
 ```bash
 make feature-engineering
 ```
+It will take ~1 hour to run, depending on your machine. 
+
 View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Feature Store → Feature Groups**
 
 2. **Retrieval Model Training**
@@ -120,7 +152,7 @@ View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **
   </a>
 </p>
 
-Start the Streamlit UI that interfaces the CatBoost ranker:
+Start the Streamlit UI:
 ```bash
 make start-ui
 ```
@@ -135,16 +167,17 @@ make schedule-materialization-jobs
 ```
 View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Compute → Ingestions**
 
-7. **Deployment Creation with LLM Ranking**
+7. **Deployment Creation with LLM Ranking (Optional)**
+Optional step to replace the standard deployments (created in Step 5) with the ones powered by LLMs:
 ```bash
 make create-deployments-llm-ranking
 ```
-View results in [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**
+**NOTE**: If the script fails, go to [Hopsworks Serverless](https://rebrand.ly/serverless-github): **Data Science → Deployments**, forcefully stop all the deployments and run again.
 
 > [!WARNING]
 > The LLM Ranking deployment overrides the deployment from **5. Deployment Creation**
 
-Start the Streamlit UI that interfaces the LLM ranker:
+Start the Streamlit UI that interfaces the LLM deployment:
 ```bash
 make start-ui-llm-ranking
 ```
@@ -154,9 +187,9 @@ Accessible at `http://localhost:8501/`
 > The Streamlit UI command is compatible only with its corresponding deployment. For example, running the deployment from **5. Deployment Creation** and `make start-ui-llm-ranking` won't work.
 
 ## 🚨 Important Notes
+- Ensure UV is properly installed and configured before running any commands
 - All notebooks are executed using IPython through the UV virtual environment
 - Components should be run in the specified order when executing individually
-- Ensure UV is properly installed and configured before running any commands
 
 ## Clean Up Resources
 

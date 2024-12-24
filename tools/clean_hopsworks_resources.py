@@ -13,6 +13,7 @@ deployments = mr.get_deployments()
 # Delete each deployment
 for deployment in deployments:
     print(f"Deleting deployment: {deployment.name}.")
+    deployment.stop()
     deployment.delete()
 
 # Get the model registry

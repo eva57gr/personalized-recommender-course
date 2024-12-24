@@ -55,20 +55,26 @@ All tools used throughout the course will stick to their free tier, except OpenA
 
 ## 📚 Course
 
-This **self-paced course** consists of **5 comprehensive modules** covering theory, system design, and hands-on implementation.
+This **self-paced course consists of 5 comprehensive modules** covering theory, system design, and hands-on implementation.
+
+Everything is free of charge and accessible as follows:
+- code: this GitHub repository
+- articles: Decoding ML
 
 Our recommendation for each module:
 1. Read the article
-2. Run the Notebook (locally or on Colab)
-3. Go deeper into the code
+2. Run the Notebook to replicate our results (locally or on Colab)
+3. Following the Notebook, go deeper into the code by reading the `recsys` Python module
 
-| Module | Article | Description | Local Notebooks | Colab Notebooks |
+🥷 You will become a ninja in building real-time personalized recommenders by the end. 
+
+| Module | Article | Description | Notebooks |
 |--------|-------|-------------|----------------|-----------------|
-| 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower network. | **No code** | **No code** |
-| 2 | [Feature pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like) | Learn how to build a scalable feature pipeline using a feature store. | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) | - |
-| 3 | [Training pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/training-pipelines-for-tiktok-like) | Learn to train and evaluate the two-tower network and ranking model using MLOps best practices. | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) | - |
-| 4 | The inference pipelines | Learn how to deploy models for real-time inference (WIP) | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) | - |
-| 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs | •[7_ip_creating_deployments_llm_ranking.ipynb](notebooks/7_ip_creating_deployments_llm_ranking.ipynb) | - |
+| 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower network. | **No code** |
+| 2 | [Feature pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like) | Learn how to build a scalable feature pipeline using a feature store. | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) |
+| 3 | [Training pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/training-pipelines-for-tiktok-like) | Learn to train and evaluate the two-tower network and ranking model using MLOps best practices. | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) |
+| 4 | The inference pipelines | Learn how to deploy models for real-time inference (WIP) | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) |
+| 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs | •[7_ip_creating_deployments_llm_ranking.ipynb](notebooks/7_ip_creating_deployments_llm_ranking.ipynb) |
 
 > [!NOTE]
 > Check the [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) doc for a step-by-step installation and usage guide.
@@ -91,6 +97,19 @@ At Decoding ML we teach how to build production ML systems, thus the course foll
 ├── Makefile            # Commands to install and run the project
 ├── pyproject.toml      # Project dependencies
 ```
+
+## 👔 Dataset
+
+We will use the [H&M Personalized Fashion Recommendations](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations) dataset, available on Kaggle, open-source for academic research and education.
+
+It is an e-commerce dataset that contains fashion articles from the H&M clothes brand.
+
+It contains:
+- 105k articles
+- 137k customers
+- 31 million transactions 
+
+More on the dataset in the feature engineering pipeline [Notebook](notebooks/1_fp_computing_features.ipynb) and [article](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like).
 
 ## 🌐 Live Demo
 
