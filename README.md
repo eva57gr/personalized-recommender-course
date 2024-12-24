@@ -27,7 +27,7 @@ This hands-on course teaches you how to build and deploy a real-time personalize
   <img src="assets/two_tower_embedding_model.png" alt="two_tower_embedding_model" width="400" style="display: inline-block;">
 </p>
 
-## ❔ About This Course
+## 📖 About This Course
 
 This course is part of Decoding ML's open-source series, where we provide free hands-on resources for building GenAI and recommender systems.
 
@@ -87,7 +87,7 @@ As an open-source course, everything is self-paced, free of charge and with its 
 - **code**: this GitHub repository
 - **articles**: [Decoding ML](https://decodingml.substack.com/p/the-ultimate-recommender-system-framework)
 
-## 📚 Course Outline:
+## 📚 Course Outline
 
 This **open-source course consists of 5 comprehensive modules** covering theory, system design, and hands-on implementation.
 
@@ -96,6 +96,9 @@ Our recommendation for each module:
 2. Run the Notebook to replicate our results (locally or on Colab)
 3. Following the Notebook, go deeper into the code by reading the `recsys` Python module
 
+> [!NOTE]
+> Check the [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) doc for a step-by-step installation and usage guide.
+
 | Module | Article | Description | Notebooks |
 |--------|-------|-------------|----------------|
 | 1 | [Building a TikTok-like recommender](https://decodingml.substack.com/p/33d3273e-b8e3-4d98-b160-c3d239343022) | Learn how to architect a recommender system using the 4-stage architecture and two-tower network. | **No code** |
@@ -103,9 +106,6 @@ Our recommendation for each module:
 | 3 | [Training pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/training-pipelines-for-tiktok-like) | Learn to train and evaluate the two-tower network and ranking model using MLOps best practices. | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) |
 | 4 | The inference pipelines | Learn how to deploy models for real-time inference (WIP) | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) |
 | 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs | •[7_ip_creating_deployments_llm_ranking.ipynb](notebooks/7_ip_creating_deployments_llm_ranking.ipynb) |
-
-> [!NOTE]
-> Check the [INSTALL_AND_USAGE](https://github.com/decodingml/hands-on-personalized-recommender/blob/main/INSTALL_AND_USAGE.md) doc for a step-by-step installation and usage guide.
 
 ### Google Colab
 
