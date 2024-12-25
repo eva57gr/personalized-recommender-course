@@ -89,7 +89,7 @@ All tools used throughout the course will stick to their free tier, except OpenA
 
 ## 🥂 Open-source Course: Participation is Open and Free
 
-As an open-source course, everything is self-paced, free of charge and with its resources freely accessible as follows:
+As an open-source course, you don't have to enroll. Everything is self-paced, free of charge and with its resources freely accessible as follows:
 - **code**: this GitHub repository
 - **articles**: [Decoding ML](https://decodingml.substack.com/p/the-ultimate-recommender-system-framework)
 
