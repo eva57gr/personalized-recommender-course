@@ -111,14 +111,7 @@ class HopsworksQueryModel:
 
     @classmethod
     def _prepare_secrets(cls, ranking_model_type: Literal["ranking", "llmranking"]):
-        connection = hopsworks.connection(
-            host="c.app.hopsworks.ai",
-            hostname_verification=False,
-            port=443,
-            api_key_value=settings.HOPSWORKS_API_KEY.get_secret_value(),
-        )
-
-        secrets_api = connection.get_secrets_api()
+        secrets_api = hopsworks.get_secrets_api()
         secrets = secrets_api.get_secrets()
         existing_secret_keys = [secret.name for secret in secrets]
         if "RANKING_MODEL_TYPE" in existing_secret_keys:

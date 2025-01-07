@@ -30,7 +30,7 @@ class Transformer(object):
         self.ranking_server = ms.get_deployment(self.ranking_model_type)
 
     def _retrieve_secrets(self):
-        secrets_api = hopsworks.connection().get_secrets_api()
+        secrets_api = hopsworks.get_secrets_api()
         try:
             self.ranking_model_type = secrets_api.get_secret("RANKING_MODEL_TYPE").value
         except Exception as e:

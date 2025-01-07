@@ -112,19 +112,13 @@ class HopsworksLLMRankingModel:
 
     @classmethod
     def _prepare_secrets(cls):
-        connection = hopsworks.connection(
-            host="c.app.hopsworks.ai",
-            hostname_verification=False,
-            port=443,
-            api_key_value=settings.HOPSWORKS_API_KEY.get_secret_value(),
-        )
         if not settings.OPENAI_API_KEY:
             raise ValueError(
                 "Missing required secret: 'OPENAI_API_KEY'. Please ensure it is set in the .env file or config.py "
                 "settings."
             )
 
-        secrets_api = connection.get_secrets_api()
+        secrets_api = hopsworks.get_secrets_api()
         secrets = secrets_api.get_secrets()
         existing_secret_keys = [secret.name for secret in secrets]
         if "OPENAI_API_KEY" in existing_secret_keys:
