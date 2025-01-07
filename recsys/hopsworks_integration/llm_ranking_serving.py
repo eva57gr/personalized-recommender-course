@@ -117,14 +117,17 @@ class HopsworksLLMRankingModel:
                 "Missing required secret: 'OPENAI_API_KEY'. Please ensure it is set in the .env file or config.py "
                 "settings."
             )
-
+        
+        project = hopsworks.login(
+            hostname_verification=False,
+            api_key_value=settings.HOPSWORKS_API_KEY.get_secret_value       
+        )
         secrets_api = hopsworks.get_secrets_api()
         secrets = secrets_api.get_secrets()
         existing_secret_keys = [secret.name for secret in secrets]
         if "OPENAI_API_KEY" in existing_secret_keys:
             secrets_api._delete(name="OPENAI_API_KEY")
 
-        project = hopsworks.login()
         secrets_api.create_secret(
             "OPENAI_API_KEY",
             settings.OPENAI_API_KEY.get_secret_value(),
