@@ -67,7 +67,8 @@ class Predict(object):
         self.parser = ScoreOutputParser()
 
     def _retrieve_secrets(self):
-        secrets_api = hopsworks.connection().get_secrets_api()
+        project = hopsworks.login()
+        secrets_api = hopsworks.get_secrets_api()
         self.openai_api_key = secrets_api.get_secret("OPENAI_API_KEY").value
 
     def predict(self, inputs):
