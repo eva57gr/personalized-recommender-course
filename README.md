@@ -115,7 +115,7 @@ Our recommendation for each module:
 
 ### Google Colab
 
-To run the Notebooks in Google Colab, copy-paste them into your Google Drive, open them with Google Colab, and run them as any other notebook. Our initial setup steps will **prepare the Python environment automatically**.
+To run the Notebooks in Google Colab, copy-paste them into your Google Drive, open them with Google Colab, and run them as running them locally. At the beginning of each Notebook, we have a set of setup steps that will **prepare the code and Python environment automatically**.
 
 ## 🏗️ Project Structure
 
