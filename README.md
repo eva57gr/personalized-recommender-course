@@ -111,11 +111,11 @@ Our recommendation for each module:
 | 2 | [Feature pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/feature-pipeline-for-tiktok-like) | Learn how to build a scalable feature pipeline using a feature store. | •[1_fp_computing_features.ipynb](notebooks/1_fp_computing_features.ipynb) |
 | 3 | [Training pipelines for TikTok-like recommenders](https://decodingml.substack.com/p/training-pipelines-for-tiktok-like) | Learn to train and evaluate the two-tower network and ranking model using MLOps best practices. | •[2_tp_training_retrieval_model.ipynb](notebooks/2_tp_training_retrieval_model.ipynb)<br>•[3_tp_training_ranking_model.ipynb](notebooks/3_tp_training_ranking_model.ipynb) |
 | 4 | [Deploy scalable TikTok-like recommenders](https://decodingml.substack.com/p/deploy-scalable-tiktok-like-recommenders) | Learn how to architect and deploy the inference pipelines for real-time recommendations using the 4-stage design. | •[4_ip_computing_item_embeddings.ipynb](notebooks/4_ip_computing_item_embeddings.ipynb)<br>•[5_ip_creating_deployments.ipynb](notebooks/5_ip_creating_deployments.ipynb)<br>•[6_scheduling_materialization_jobs.ipynb](notebooks/6_scheduling_materialization_jobs.ipynb) |
-| 5 | Building personalized real-time recommenders with LLMs | Learn how to enhance recommendations with LLMs | •[7_ip_creating_deployments_llm_ranking.ipynb](notebooks/7_ip_creating_deployments_llm_ranking.ipynb) |
+| 5 | [Using LLMs to build TikTok-like recommenders](https://decodingml.substack.com/p/using-llms-to-build-tiktok-like-recommenders) | Learn how to enhance the H&M personalized recommender with LLMs. | •[7_ip_creating_deployments_llm_ranking.ipynb](notebooks/7_ip_creating_deployments_llm_ranking.ipynb) |
 
 ### Google Colab
 
-To run the Notebooks in Google Colab, copy-paste them into your Google Drive, open them, and run them. Our setup steps will prepare the Python environment automatically.
+To run the Notebooks in Google Colab, copy-paste them into your Google Drive, open them with Google Colab, and run them as any other notebook. Our initial setup steps will **prepare the Python environment automatically**.
 
 ## 🏗️ Project Structure
 
