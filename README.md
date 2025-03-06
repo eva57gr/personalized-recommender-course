@@ -63,6 +63,30 @@ Try out our deployed H&M real-time personalized recommender to see what you'll l
   </a>
 </p>
 
+----
+
+<table style="border-collapse: collapse; border: none;">
+  <tr style="border: none;">
+    <td width="20%" style="border: none;">
+      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
+        <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
+      </a>
+    </td>
+    <td width="80%" style="border: none;">
+      <div>
+        <h2>📬 Stay Updated</h2>
+        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on production-grade AI, GenAI, and information retrieval systems. Every week, straight to your inbox.</p>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://decodingml.substack.com/">
+    <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
+  </a>
+</p>
+
 ## 👥 Who Should Join?
 
 **This course is ideal for:**
@@ -116,6 +140,30 @@ Our recommendation for each module:
 ### Google Colab
 
 To run the Notebooks in Google Colab, copy-paste them into your Google Drive, open them with Google Colab, and run them as running them locally. At the beginning of each Notebook, we have a set of setup steps that will **prepare the code and Python environment automatically**.
+
+----
+
+<table style="border-collapse: collapse; border: none;">
+  <tr style="border: none;">
+    <td width="20%" style="border: none;">
+      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
+        <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
+      </a>
+    </td>
+    <td width="80%" style="border: none;">
+      <div>
+        <h2>📬 Stay Updated</h2>
+        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on production-grade AI, GenAI, and information retrieval systems. Every week, straight to your inbox.</p>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://decodingml.substack.com/">
+    <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
+  </a>
+</p>
 
 ## 🏗️ Project Structure
 
@@ -229,3 +277,27 @@ We will deeply appreciate your support for the AI community and future readers �
 ## License
 
 This course is an open-source project released under the MIT license. Thus, as long you distribute our LICENSE and acknowledge your project is based on our work, you can safely clone or fork this project and use it as a source of inspiration for your educational projects (e.g., university, college degree, personal projects, etc.).
+
+----
+
+<table style="border-collapse: collapse; border: none;">
+  <tr style="border: none;">
+    <td width="20%" style="border: none;">
+      <a href="https://decodingml.substack.com/" aria-label="Decoding ML">
+        <img src="https://github.com/user-attachments/assets/f2f2f9c0-54b7-4ae3-bf8d-23a359c86982" alt="Decoding ML Logo" width="150"/>
+      </a>
+    </td>
+    <td width="80%" style="border: none;">
+      <div>
+        <h2>📬 Stay Updated</h2>
+        <p><b><a href="https://decodingml.substack.com/">Join Decoding ML</a></b> for proven content on production-grade AI, GenAI, and information retrieval systems. Every week, straight to your inbox.</p>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://decodingml.substack.com/">
+    <img src="https://img.shields.io/static/v1?label&logo=substack&message=Subscribe Now&style=for-the-badge&color=black&scale=2" alt="Subscribe Now" height="40">
+  </a>
+</p>
